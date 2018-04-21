@@ -1,0 +1,7 @@
+test
+.nyc_output
+.gitignore
+.jshintrc
+.travis.yml
+appveyor.yml
+webpack.config.js
