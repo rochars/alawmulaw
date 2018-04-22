@@ -18,11 +18,11 @@ module.exports = {
           multiple: [
             {
               search: 'module.exports.alaw',
-              replace: "window['alaw']",
+              replace: "window['alawmulaw'] = {}; window['alawmulaw']['alaw']",
             },
             {
               search: 'module.exports.mulaw',
-              replace: "window['mulaw']",
+              replace: "window['alawmulaw']['mulaw']",
             },
           ]
         }

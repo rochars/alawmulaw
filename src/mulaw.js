@@ -8,11 +8,11 @@
  * 
  */
 
-let BIAS = 0x84;
-let SIGN_BIT = 0x80;
-let QUANT_MASK = 0xf;
-let SEG_MASK = 0x70;
-let SEG_SHIFT = 4;
+const BIAS = 0x84;
+const SIGN_BIT = 0x80;
+const QUANT_MASK = 0xf;
+const SEG_MASK = 0x70;
+const SEG_SHIFT = 4;
 
 function valSeg(val) {
   let r = 0;
@@ -31,7 +31,7 @@ function valSeg(val) {
 }
 
 /**
- * Encode a 16-bit sample as 8-bit mu-Law.
+ * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
  * @param {number} sample A 16-bit sample
  * @return {number}
  */
@@ -55,8 +55,8 @@ function encodeSampleMuLaw(pcmSample) {
 }
 
 /**
- * Decode a 8-bit A-Law sample as 16-bit PCM.
- * @param {number} number The 8-bit A-Law sample
+ * Decode a 8-bit mu-Law sample as 16-bit linear PCM.
+ * @param {number} number The 8-bit mu-Law sample
  * @return {number}
  */
 function decodeSampleMuLaw(muLawSample) {
@@ -68,8 +68,8 @@ function decodeSampleMuLaw(muLawSample) {
 }
 
 /**
- * Encode 16-bit PCM samples into 8-bit A-Law samples.
- * @param {!Array<number>} samples A array of 16-bit PCM samples.
+ * Encode 16-bit linear PCM samples into 8-bit mu-Law samples.
+ * @param {!Array<number>} samples A array of 16-bit linear PCM samples.
  * @return {!Array<number>}
  */
 function encodeMuLaw(samples) {
@@ -81,8 +81,8 @@ function encodeMuLaw(samples) {
 }
 
 /**
- * Decode 8-bit A-Law samples into 16-bit PCM samples.
- * @param {!Array<number>} samples A array of 8-bit A-Law samples.
+ * Decode 8-bit mu-Law samples into 16-bit linear PCM samples.
+ * @param {!Array<number>} samples A array of 8-bit mu-Law samples.
  * @return {!Array<number>}
  */
 function decodeMuLaw(samples) {

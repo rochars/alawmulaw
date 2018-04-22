@@ -10,8 +10,8 @@
  */
 
 /**
- * Encode a 16-bit sample as 8-bit A-Law.
- * @param {number} sample A 16-bit sample
+ * Encode a 16-bit linear PCM sample as 8-bit A-Law.
+ * @param {number} sample A 16-bit linear PCM sample
  * @return {number}
  */
 function  encodeSampleALaw(sample) {
@@ -46,7 +46,7 @@ function  encodeSampleALaw(sample) {
 }
 
 /**
- * Decode a 8-bit A-Law sample as 16-bit PCM.
+ * Decode a 8-bit A-Law sample as 16-bit linear PCM.
  * @param {number} number The 8-bit A-Law sample
  * @return {number}
  */
@@ -72,7 +72,7 @@ function decodeSampleALaw(aLawSample) {
 }
 
 /**
- * Encode 16-bit PCM samples into 8-bit A-Law samples.
+ * Encode 16-bit linear PCM samples into 8-bit A-Law samples.
  * @param {!Array<number>} samples A array of 16-bit PCM samples.
  * @return {!Array<number>}
  */
@@ -85,7 +85,7 @@ function encodeALaw(samples) {
 }
 
 /**
- * Decode 8-bit A-Law samples into 16-bit PCM samples.
+ * Decode 8-bit A-Law samples into 16-bit linear PCM samples.
  * @param {!Array<number>} samples A array of 8-bit A-Law samples.
  * @return {!Array<number>}
  */

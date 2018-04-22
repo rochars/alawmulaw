@@ -75,17 +75,17 @@ pcmSample = mulaw.decodeSample(muLawSample);
 ```html
 <script src="dist/alawmulaw-min.js"></script>
 <script>
-	// A-Law
-    samples = alaw.encode(samples);
-    samples = alaw.decode(samples);
-    sample = alaw.encodeSample(sample);
-    sample = alaw.decodeSample(sample);
+    // A-Law
+    samples = alawmulaw.alaw.encode(samples);
+    samples = alawmulaw.alaw.decode(samples);
+    sample = alawmulaw.alaw.encodeSample(sample);
+    sample = alawmulaw.alaw.decodeSample(sample);
 
     // mu-Law
-    samples = mulaw.encode(samples);
-    samples = mulaw.decode(samples);
-    sample = mulaw.encode(sample);
-    sample = mulaw.decode(sample);
+    samples = alawmulaw.mulaw.encode(samples);
+    samples = alawmulaw.mulaw.decode(samples);
+    sample = alawmulaw.mulaw.encodeSample(sample);
+    sample = alawmulaw.mulaw.decodeSample(sample);
 </script>
 ```
 
