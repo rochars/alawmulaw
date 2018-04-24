@@ -22,7 +22,7 @@ Full files:
 
 const alaw = require("alawmulaw").alaw;
 
-// Compressing all the samples in a file
+// Encode all the samples in a file
 // Only 16-bit samples are supported
 aLawSamples = alaw.encode(pcmSamples);
 
@@ -35,10 +35,10 @@ Sample by sample:
 
 const alaw = require("alawmulaw").alaw;
 
-// Compressing
+// Encoding
 aLawSample = alaw.encodeSample(pcmSample);
 
-// Decompressing
+// Decoding
 pcmSample = alaw.decodeSample(aLawSample);
 ```
 
@@ -49,11 +49,11 @@ Full files:
 
 const mulaw = require("alawmulaw").mulaw;
 
-// Compressing all the samples in a file
+// Encode all the samples in a file
 // Only 16-bit samples are supported
 muLawSamples = mulaw.encode(pcmSamples);
 
-// Decompressing all the samples in a file
+// Decode all the samples in a file
 pcmSamples = mulaw.decode(muLawSamples);
 ```
 
@@ -62,10 +62,10 @@ Sample by sample:
 
 const mulaw = require("alawmulaw").mulaw;
 
-// Compressing
+// Encoding
 muLawSample = mulaw.encodeSample(pcmSample);
 
-// Decompressing
+// Decoding
 pcmSample = mulaw.decodeSample(muLawSample);
 ```
 

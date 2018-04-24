@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#decodeALaw">decodeALaw</a></li><li><a href="global.html#decodeMuLaw">decodeMuLaw</a></li><li><a href="global.html#decodeSampleALaw">decodeSampleALaw</a></li><li><a href="global.html#decodeSampleMuLaw">decodeSampleMuLaw</a></li><li><a href="global.html#encodeALaw">encodeALaw</a></li><li><a href="global.html#encodeMuLaw">encodeMuLaw</a></li><li><a href="global.html#encodeSampleALaw">encodeSampleALaw</a></li><li><a href="global.html#encodeSampleMuLaw">encodeSampleMuLaw</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#decode">decode</a></li><li><a href="global.html#decodeSample">decodeSample</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#encodeSample">encodeSample</a></li></ul>
 </nav>
 
 <div id="main">
@@ -115,7 +115,7 @@
 
     
 
-    <h4 class="name" id="decodeALaw"><span class="type-signature"></span>decodeALaw<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="decode"><span class="type-signature"></span>decode<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
 
     
 
@@ -266,7 +266,7 @@
 
     
 
-    <h4 class="name" id="decodeMuLaw"><span class="type-signature"></span>decodeMuLaw<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="decode"><span class="type-signature"></span>decode<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
 
     
 
@@ -417,7 +417,7 @@
 
     
 
-    <h4 class="name" id="decodeSampleALaw"><span class="type-signature"></span>decodeSampleALaw<span class="signature">(number)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="decodeSample"><span class="type-signature"></span>decodeSample<span class="signature">(aLawSample)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -507,7 +507,7 @@
 
         <tr>
             
-                <td class="name"><code>number</code></td>
+                <td class="name"><code>aLawSample</code></td>
             
 
             <td class="type">
@@ -568,7 +568,7 @@
 
     
 
-    <h4 class="name" id="decodeSampleMuLaw"><span class="type-signature"></span>decodeSampleMuLaw<span class="signature">(number)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="decodeSample"><span class="type-signature"></span>decodeSample<span class="signature">(muLawSample)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -658,7 +658,7 @@
 
         <tr>
             
-                <td class="name"><code>number</code></td>
+                <td class="name"><code>muLawSample</code></td>
             
 
             <td class="type">
@@ -719,7 +719,7 @@
 
     
 
-    <h4 class="name" id="encodeALaw"><span class="type-signature"></span>encodeALaw<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="encode"><span class="type-signature"></span>encode<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
 
     
 
@@ -870,7 +870,7 @@
 
     
 
-    <h4 class="name" id="encodeMuLaw"><span class="type-signature"></span>encodeMuLaw<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
+    <h4 class="name" id="encode"><span class="type-signature"></span>encode<span class="signature">(samples<span class="signature-attributes">non-null</span>)</span><span class="type-signature"> &rarr; (non-null) {Array.&lt;number>}</span></h4>
 
     
 
@@ -1021,7 +1021,7 @@
 
     
 
-    <h4 class="name" id="encodeSampleALaw"><span class="type-signature"></span>encodeSampleALaw<span class="signature">(sample)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="encodeSample"><span class="type-signature"></span>encodeSample<span class="signature">(sample)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -1172,7 +1172,7 @@
 
     
 
-    <h4 class="name" id="encodeSampleMuLaw"><span class="type-signature"></span>encodeSampleMuLaw<span class="signature">(sample)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="encodeSample"><span class="type-signature"></span>encodeSample<span class="signature">(pcmSample)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -1262,7 +1262,7 @@
 
         <tr>
             
-                <td class="name"><code>sample</code></td>
+                <td class="name"><code>pcmSample</code></td>
             
 
             <td class="type">
@@ -1336,7 +1336,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 22 2018 12:34:19 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 24 2018 19:42:47 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

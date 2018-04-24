@@ -14,7 +14,7 @@
  * @param {number} sample A 16-bit linear PCM sample
  * @return {number}
  */
-function  encodeSampleALaw(sample) {
+function  encodeSample(sample) {
     let clip = 32635;
     let logTable = [
         1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
@@ -47,10 +47,10 @@ function  encodeSampleALaw(sample) {
 
 /**
  * Decode a 8-bit A-Law sample as 16-bit linear PCM.
- * @param {number} number The 8-bit A-Law sample
+ * @param {number} aLawSample The 8-bit A-Law sample
  * @return {number}
  */
-function decodeSampleALaw(aLawSample) {
+function decodeSample(aLawSample) {
    let sign = 0x00;
    let position = 0;
    let decoded = 0;
@@ -76,10 +76,10 @@ function decodeSampleALaw(aLawSample) {
  * @param {!Array<number>} samples A array of 16-bit PCM samples.
  * @return {!Array<number>}
  */
-function encodeALaw(samples) {
+function encode(samples) {
     let aLawSamples = [];
     for (let i=0; i<samples.length; i++) {
-        aLawSamples.push(encodeSampleALaw(samples[i]));
+        aLawSamples.push(encodeSample(samples[i]));
     }
     return aLawSamples;
 }
@@ -89,15 +89,15 @@ function encodeALaw(samples) {
  * @param {!Array<number>} samples A array of 8-bit A-Law samples.
  * @return {!Array<number>}
  */
-function decodeALaw(samples) {
+function decode(samples) {
     let pcmSamples = [];
     for (let i=0; i<samples.length; i++) {
-        pcmSamples.push(decodeSampleALaw(samples[i]));
+        pcmSamples.push(decodeSample(samples[i]));
     }
     return pcmSamples;
 }
 
-module.exports.encodeSample = encodeSampleALaw;
-module.exports.decodeSample = decodeSampleALaw;
-module.exports.encode = encodeALaw;
-module.exports.decode = decodeALaw;
+module.exports.encodeSample = encodeSample;
+module.exports.decodeSample = decodeSample;
+module.exports.encode = encode;
+module.exports.decode = decode;

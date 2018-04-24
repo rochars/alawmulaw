@@ -1,6 +1,6 @@
 {
   "name": "alawmulaw",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "JavaScript A-Law and mu-Law codecs.",
   "homepage": "https://github.com/rochars/alawmulaw",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
