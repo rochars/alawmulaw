@@ -4,19 +4,24 @@
  */
 
 var assert = require('assert');
+let alawmulaw = require("../index.js");
 
 describe('decode A-Law', function() {
-    let alaw = require("../index.js").alaw;
-    it("samples.length should be > 0",
+    
+    it("Should decode 8-bit A-Law values as 16-bit",
         function() {
-            assert.ok(alaw.decode([0]));
+            assert.deepEqual([-5504], alawmulaw.alaw.decode([0]));
+            assert.deepEqual([848], alawmulaw.alaw.decode([255]));
+            assert.deepEqual([5504], alawmulaw.alaw.decode([128]));
         });
 });
 
 describe('decode mu-Law', function() {
     let mulaw = require("../index.js").mulaw;
-    it("samples.length should be > 0",
+    it("Should decode 8-bit mu-Law values as 16-bit",
         function() {
-            assert.ok(mulaw.decode([0]));
+            assert.deepEqual([-32124], alawmulaw.mulaw.decode([0]));
+            assert.deepEqual([0], alawmulaw.mulaw.decode([255]));
+            assert.deepEqual([32124], alawmulaw.mulaw.decode([128]));
         });
 });

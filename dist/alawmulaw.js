@@ -140,19 +140,19 @@ function decodeSample(aLawSample) {
    let position = 0;
    let decoded = 0;
    aLawSample ^= 0x55;
-   if(aLawSample & 0x80) {
+   if (aLawSample & 0x80) {
       aLawSample &= ~(1 << 7);
       sign = -1;
    }
    position = ((aLawSample & 0xF0) >> 4) + 4;
-   if(position!=4) {
+   if (position != 4) {
       decoded = ((1 << position) |
                 ((aLawSample & 0x0F) << (position - 4)) |
                 (1 << (position - 5)));
    } else {
       decoded = (aLawSample << 1)|1;
    }
-   decoded = (sign == 0) ? (decoded) : (-decoded);
+   decoded = (sign === 0) ? (decoded) : (-decoded);
    return (decoded * 8) * -1;
 }
 
@@ -219,8 +219,9 @@ function valSeg(val) {
     val >>= 2;
     r += 2;
   }
-  if (val & 0x02)
+  if (val & 0x02) {
     r += 1;
+  }
   return r;
 }
 

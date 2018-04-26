@@ -25,8 +25,9 @@ function valSeg(val) {
     val >>= 2;
     r += 2;
   }
-  if (val & 0x02)
+  if (val & 0x02) {
     r += 1;
+  }
   return r;
 }
 
