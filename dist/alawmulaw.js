@@ -75,7 +75,7 @@
  * 
  */
 
-window['alawmulaw'] = {}; window['alawmulaw']['alaw'] = __webpack_require__(1);
+window['alawmulaw'] = window['alawmulaw'] || {};window['alawmulaw']['alaw'] = __webpack_require__(1);
 window['alawmulaw']['mulaw'] = __webpack_require__(2);
 
 
@@ -99,7 +99,7 @@ window['alawmulaw']['mulaw'] = __webpack_require__(2);
  * @param {number} sample A 16-bit linear PCM sample
  * @return {number}
  */
-function  encodeSample(sample) {
+function encodeSample(sample) {
     let clip = 32635;
     let logTable = [
         1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
@@ -202,13 +202,19 @@ module.exports.decode = decode;
  * 
  */
 
+/** @private */
 const BIAS = 0x84;
+/** @private */
 const SIGN_BIT = 0x80;
+/** @private */
 const QUANT_MASK = 0xf;
+/** @private */
 const SEG_MASK = 0x70;
+/** @private */
 const SEG_SHIFT = 4;
 
-function valSeg(val) {
+/** @private */
+function valSeg_(val) {
   let r = 0;
   val >>= 7;
   if (val & 0xf0) {
@@ -244,7 +250,7 @@ function encodeSample(pcmSample) {
   if (pcmSample > 0x7FFF) {
     pcmSample = 0x7FFF;
   }
-  seg = valSeg(pcmSample);
+  seg = valSeg_(pcmSample);
   uval = (seg << 4) | ((pcmSample >> (seg + 3)) & 0xF);
   return uval ^ mask;
 }

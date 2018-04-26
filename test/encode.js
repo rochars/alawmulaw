@@ -4,7 +4,7 @@
  */
 
 var assert = require('assert');
-let alawmulaw = require("../index.js");
+let alawmulaw = require("../test/loader.js");
 
 describe('encode A-Law', function() {
     

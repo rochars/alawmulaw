@@ -14,7 +14,7 @@
  * @param {number} sample A 16-bit linear PCM sample
  * @return {number}
  */
-function  encodeSample(sample) {
+function encodeSample(sample) {
     let clip = 32635;
     let logTable = [
         1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 

@@ -4,10 +4,9 @@
  */
 
 var assert = require('assert');
-let alawmulaw = require("../index.js");
+let alawmulaw = require("../test/loader.js");
 
 describe('decode A-Law', function() {
-    
     it("Should decode 8-bit A-Law values as 16-bit",
         function() {
             assert.deepEqual([-5504], alawmulaw.alaw.decode([0]));
@@ -17,7 +16,6 @@ describe('decode A-Law', function() {
 });
 
 describe('decode mu-Law', function() {
-    let mulaw = require("../index.js").mulaw;
     it("Should decode 8-bit mu-Law values as 16-bit",
         function() {
             assert.deepEqual([-32124], alawmulaw.mulaw.decode([0]));

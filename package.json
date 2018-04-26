@@ -1,6 +1,6 @@
 {
   "name": "alawmulaw",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "JavaScript A-Law and mu-Law codecs.",
   "homepage": "https://github.com/rochars/alawmulaw",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
@@ -26,16 +26,16 @@
   },
   "scripts": {
     "lint": "jshint index.js",
-    "test": "nyc ./node_modules/mocha/bin/_mocha --recursive",
+    "test": "nyc ./node_modules/mocha/bin/_mocha test --src --recursive",
+    "test-dist": "nyc ./node_modules/mocha/bin/_mocha test  --dist --recursive",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "bundle": "webpack",
     "compile": "google-closure-compiler-js dist/alawmulaw.js > dist/alawmulaw-min.js",
     "doc": "./node_modules/.bin/jsdoc index.js src -d docs -r README.md -t node_modules/docdash",
-    "qa": "npm run lint && npm run test",
-    "pack": "npm run bundle && npm run compile && npm run doc",
-    "build": "npm run qa && npm run pack"
+    "pack": "webpack && npm run compile && npm run doc",
+    "build": "npm run lint && npm run pack && npm run test-dist && npm run test"
   },
   "devDependencies": {
+    "browser-env": "^3.2.5",
     "codecov": "^3.0.0",
     "docdash": "^0.4.0",
     "google-closure-compiler-js": "^20170910.0.1",
