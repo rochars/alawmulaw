@@ -3,12 +3,22 @@
  * https://github.com/rochars/alawmulaw
  *
  */
-
+const ClosureCompiler = require('google-closure-compiler-js').webpack;
 module.exports = {
   entry: './index.js',
   output: {
-    filename: './dist/alawmulaw.js'
+    filename: './dist/alawmulaw-min.js'
   },
+  plugins: [
+    new ClosureCompiler({
+      options: {
+        languageIn: 'ECMASCRIPT6',
+        languageOut: 'ECMASCRIPT5',
+        compilationLevel: 'ADVANCED',
+        warningLevel: "VERBOSE"
+      }
+    })
+  ],
   module: {
     loaders: [
       {

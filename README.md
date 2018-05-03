@@ -3,13 +3,11 @@ JavaScript A-Law and mu-Law codecs.
 Copyright (c) 2018 Rafael da Silva Rocha.  
 https://github.com/rochars/alawmulaw
 
-References:  
-https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c  
-https://github.com/deftio/companders  
-http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html
-
 [![NPM version](https://img.shields.io/npm/v/alawmulaw.svg?style=for-the-badge)](https://www.npmjs.com/package/alawmulaw) [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge)](https://rochars.github.io/alawmulaw/index.html)  
 [![Codecov](https://img.shields.io/codecov/c/github/rochars/alawmulaw.svg?style=flat-square)](https://codecov.io/gh/rochars/alawmulaw) [![Unix Build](https://img.shields.io/travis/rochars/alawmulaw.svg?style=flat-square)](https://travis-ci.org/rochars/alawmulaw) [![Windows Build](https://img.shields.io/appveyor/ci/rochars/alawmulaw.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/rochars/alawmulaw) [![Scrutinizer](https://img.shields.io/scrutinizer/g/rochars/alawmulaw.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/rochars/alawmulaw/)
+
+## About
+A-Law and μ-Law codecs for Node.js and the browser.
 
 ## Install
 ```
@@ -85,6 +83,11 @@ pcmSample = mulaw.decodeSample(muLawSample);
     sample = alawmulaw.mulaw.decodeSample(sample);
 </script>
 ```
+
+## References
+https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c  
+https://github.com/deftio/companders  
+http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html
 
 ## LICENSE
 Copyright (c) 2018 Rafael da Silva Rocha.
