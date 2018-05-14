@@ -1,7 +1,7 @@
 {
   "name": "alawmulaw",
-  "version": "2.0.4",
-  "description": "JavaScript A-Law and mu-Law codecs.",
+  "version": "2.0.5",
+  "description": "A-Law and mu-Law codecs for Node.js and the browser.",
   "homepage": "https://github.com/rochars/alawmulaw",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",
@@ -18,7 +18,8 @@
     "PCM",
     "file",
     "streaming",
-    "browser"
+    "browser",
+    "node"
   ],
   "repository": {
     "type": "git",
@@ -31,7 +32,8 @@
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "doc": "./node_modules/.bin/jsdoc index.js src -d docs -r README.md -t node_modules/docdash",
     "pack": "webpack && npm run test-dist",
-    "build": "npm run lint && npm run pack && npm run test && npm run doc"
+    "build": "npm run lint && npm run test && npm run pack && npm run doc",
+    "build-ci": "npm run lint && npm run pack && npm run test && npm run doc"
   },
   "devDependencies": {
     "browser-env": "^3.2.5",
