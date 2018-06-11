@@ -13,6 +13,17 @@ A-Law and μ-Law codecs for Node.js and the browser.
 npm install alawmulaw
 ```
 
+## Browser
+Use the compiled file in the */dist* folder:
+```html
+<script src="alawmulaw-min.js"></script>
+```
+
+Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
+```html
+<script src="https://cdn.jsdelivr.net/npm/alawmulaw@2.0.6"></script>
+```
+
 ## A-Law
 Full files:
 ```javascript

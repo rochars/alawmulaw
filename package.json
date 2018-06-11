@@ -1,7 +1,7 @@
 {
   "name": "alawmulaw",
-  "version": "2.0.5",
-  "description": "A-Law and mu-Law codecs for Node.js and the browser.",
+  "version": "2.0.6",
+  "description": "A-Law and mu-Law codecs in JavaScript.",
   "homepage": "https://github.com/rochars/alawmulaw",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",
@@ -48,6 +48,7 @@
     "string-replace-loader": "^1.3.0",
     "webpack": "^3.8.1"
   },
+  "dependencies": {},
   "main": "index.js",
-  "dependencies": {}
+  "browser": "./dist/alawmulaw-min.js"
 }
