@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#alaw">alaw</a></li><li><a href="global.html#decode">decode</a></li><li><a href="global.html#decodeSample">decodeSample</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#encodeSample">encodeSample</a></li><li><a href="global.html#mulaw">mulaw</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-alawmulaw_alaw.html">alawmulaw/alaw</a><ul class='methods'><li data-type='method'><a href="module-alawmulaw_alaw.html#~decode">decode</a></li><li data-type='method'><a href="module-alawmulaw_alaw.html#~decodeSample">decodeSample</a></li><li data-type='method'><a href="module-alawmulaw_alaw.html#~encode">encode</a></li><li data-type='method'><a href="module-alawmulaw_alaw.html#~encodeSample">encodeSample</a></li></ul></li><li><a href="module-alawmulaw_mulaw.html">alawmulaw/mulaw</a><ul class='methods'><li data-type='method'><a href="module-alawmulaw_mulaw.html#~decode">decode</a></li><li data-type='method'><a href="module-alawmulaw_mulaw.html#~decodeSample">decodeSample</a></li><li data-type='method'><a href="module-alawmulaw_mulaw.html#~encode">encode</a></li><li data-type='method'><a href="module-alawmulaw_mulaw.html#~encodeSample">encodeSample</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -51,9 +51,8 @@
 <h2>About</h2><p>A-Law and μ-Law codecs for Node.js and the browser.</p>
 <h2>Install</h2><pre class="prettyprint source"><code>npm install alawmulaw</code></pre><h2>Browser</h2><p>Use the compiled file in the <em>/dist</em> folder:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;alawmulaw.min.js&quot;>&lt;/script></code></pre><p>Or get it from the <a href="https://www.jsdelivr.com">jsDelivr</a> CDN:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/alawmulaw@3/dist/alawmulaw.min.js&quot;>&lt;/script></code></pre><h2>A-Law</h2><p>Full files:</p>
-<pre class="prettyprint source lang-javascript"><code>
-const alaw = require(&quot;alawmulaw&quot;).alaw;
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/alawmulaw@3/dist/alawmulaw.min.js&quot;>&lt;/script></code></pre><h2>Use</h2><h3>A-Law</h3><p>Full files:</p>
+<pre class="prettyprint source lang-javascript"><code>const alaw = require(&quot;alawmulaw&quot;).alaw;
 
 // Encode all the samples in a file
 // Only 16-bit samples are supported
@@ -61,16 +60,14 @@ aLawSamples = alaw.encode(pcmSamples);
 
 // Decompressing all the samples in a file
 pcmSamples = alaw.decode(aLawSamples);</code></pre><p>Sample by sample:</p>
-<pre class="prettyprint source lang-javascript"><code>
-const alaw = require(&quot;alawmulaw&quot;).alaw;
+<pre class="prettyprint source lang-javascript"><code>const alaw = require(&quot;alawmulaw&quot;).alaw;
 
 // Encoding
 aLawSample = alaw.encodeSample(pcmSample);
 
 // Decoding
-pcmSample = alaw.decodeSample(aLawSample);</code></pre><h2>mu-Law</h2><p>Full files:</p>
-<pre class="prettyprint source lang-javascript"><code>
-const mulaw = require(&quot;alawmulaw&quot;).mulaw;
+pcmSample = alaw.decodeSample(aLawSample);</code></pre><h3>mu-Law</h3><p>Full files:</p>
+<pre class="prettyprint source lang-javascript"><code>const mulaw = require(&quot;alawmulaw&quot;).mulaw;
 
 // Encode all the samples in a file
 // Only 16-bit samples are supported
@@ -78,14 +75,13 @@ muLawSamples = mulaw.encode(pcmSamples);
 
 // Decode all the samples in a file
 pcmSamples = mulaw.decode(muLawSamples);</code></pre><p>Sample by sample:</p>
-<pre class="prettyprint source lang-javascript"><code>
-const mulaw = require(&quot;alawmulaw&quot;).mulaw;
+<pre class="prettyprint source lang-javascript"><code>const mulaw = require(&quot;alawmulaw&quot;).mulaw;
 
 // Encoding
 muLawSample = mulaw.encodeSample(pcmSample);
 
 // Decoding
-pcmSample = mulaw.decodeSample(muLawSample);</code></pre><h2>In the browser</h2><pre class="prettyprint source lang-html"><code>&lt;script src=&quot;dist/alawmulaw-min.js&quot;>&lt;/script>
+pcmSample = mulaw.decodeSample(muLawSample);</code></pre><h3>In the browser</h3><pre class="prettyprint source lang-html"><code>&lt;script src=&quot;dist/alawmulaw.min.js&quot;>&lt;/script>
 &lt;script>
     // A-Law
     samples = alawmulaw.alaw.encode(samples);
@@ -98,7 +94,59 @@ pcmSample = mulaw.decodeSample(muLawSample);</code></pre><h2>In the browser</h2>
     samples = alawmulaw.mulaw.decode(samples);
     sample = alawmulaw.mulaw.encodeSample(sample);
     sample = alawmulaw.mulaw.decodeSample(sample);
-&lt;/script></code></pre><h2>References</h2><p>https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c<br>https://github.com/deftio/companders<br>http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html</p>
+&lt;/script></code></pre><h2>API</h2><h3>alawmulaw.alaw</h3><pre class="prettyprint source lang-javascript"><code>/**
+ * Encode a 16-bit linear PCM sample as 8-bit A-Law.
+ * @param {number} sample A 16-bit linear PCM sample
+ * @return {number}
+ */
+function encodeSample(sample) {}
+
+/**
+ * Decode a 8-bit A-Law sample as 16-bit linear PCM.
+ * @param {number} aLawSample The 8-bit A-Law sample
+ * @return {number}
+ */
+function decodeSample(aLawSample) {}
+
+/**
+ * Encode 16-bit linear PCM samples into 8-bit A-Law samples.
+ * @param {!Array&lt;number>} samples A array of 16-bit PCM samples.
+ * @return {!Array&lt;number>}
+ */
+function encode(samples) {}
+
+/**
+ * Decode 8-bit A-Law samples into 16-bit linear PCM samples.
+ * @param {!Array&lt;number>} samples A array of 8-bit A-Law samples.
+ * @return {!Array&lt;number>}
+ */
+function decode(samples) {}</code></pre><h3>alawmulaw.mulaw</h3><pre class="prettyprint source lang-javascript"><code>/**
+ * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
+ * @param {number} pcmSample A 16-bit sample
+ * @return {number}
+ */
+function encodeSample(pcmSample) {}
+
+/**
+ * Decode a 8-bit mu-Law sample as 16-bit linear PCM.
+ * @param {number} muLawSample The 8-bit mu-Law sample
+ * @return {number}
+ */
+function decodeSample(muLawSample) {}
+
+/**
+ * Encode 16-bit linear PCM samples into 8-bit mu-Law samples.
+ * @param {!Array&lt;number>} samples A array of 16-bit linear PCM samples.
+ * @return {!Array&lt;number>}
+ */
+function encode(samples) {}
+
+/**
+ * Decode 8-bit mu-Law samples into 16-bit linear PCM samples.
+ * @param {!Array&lt;number>} samples A array of 8-bit mu-Law samples.
+ * @return {!Array&lt;number>}
+ */
+function decode(samples) {}</code></pre><h2>References</h2><p>https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c<br>https://github.com/deftio/companders<br>http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html</p>
 <h2>LICENSE</h2><p>Copyright (c) 2018 Rafael da Silva Rocha.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -123,12 +171,294 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 
 
 
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        index.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+        
+            <div class="description">The alawmulaw public API.</div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        src/alaw.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_alaw.js.html">src/alaw.js</a>, <a href="src_alaw.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+        
+            <div class="description">A-Law codec.References:https://github.com/deftio/compandershttp://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html</div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        src/mulaw.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_mulaw.js.html">src/mulaw.js</a>, <a href="src_mulaw.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+        
+            <div class="description">mu-Law codec.References:https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c</div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jun 17 2018 01:41:02 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jun 17 2018 01:59:35 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

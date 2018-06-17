@@ -1,9 +1,9 @@
 {
   "name": "alawmulaw",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "A-Law and mu-Law codecs in JavaScript.",
   "homepage": "https://github.com/rochars/alawmulaw",
-  "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
+  "author": "Rafael S. Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",
   "keywords": [
     "A-Law",

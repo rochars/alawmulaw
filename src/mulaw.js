@@ -1,26 +1,71 @@
 /*
- * mulaw.js
- * Copyright (c) 2018 Rafael da Silva Rocha.
+ * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
  *
- * Reference:
- * https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c
- * 
+ * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
  */
 
-/** @private */
+/**
+ * @fileoverview mu-Law codec.
+ * References:
+ * https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c
+ */
+
+/** @module alawmulaw/mulaw */
+
+/**
+ * @type {number}
+ * @private
+ */
 const BIAS = 0x84;
-/** @private */
+/**
+ * @type {number}
+ * @private
+ */
 const SIGN_BIT = 0x80;
-/** @private */
+/**
+ * @type {number}
+ * @private
+ */
 const QUANT_MASK = 0xf;
-/** @private */
+/**
+ * @type {number}
+ * @private
+ */
 const SEG_MASK = 0x70;
-/** @private */
+/**
+ * @type {number}
+ * @private
+ */
 const SEG_SHIFT = 4;
 
-/** @private */
+/**
+ * @param {number} val
+ * @return {number}
+ * @private
+ */
 function valSeg_(val) {
+  /** @type {number} */
   let r = 0;
   val >>= 7;
   if (val & 0xf0) {
@@ -43,8 +88,11 @@ function valSeg_(val) {
  * @return {number}
  */
 function encodeSample(pcmSample) {
+  /** @type {number} */
   let mask;
+  /** @type {number} */
   let seg;
+  /** @type {number} */
   let uval;
   if (pcmSample < 0) {
     pcmSample = BIAS - pcmSample;
@@ -67,6 +115,7 @@ function encodeSample(pcmSample) {
  * @return {number}
  */
 function decodeSample(muLawSample) {
+  /** @type {number} */
   let t;
   muLawSample = ~muLawSample;
   t = ((muLawSample & QUANT_MASK) << 3) + BIAS;
@@ -80,6 +129,7 @@ function decodeSample(muLawSample) {
  * @return {!Array<number>}
  */
 function encode(samples) {
+  /** @type {!Array<number>} */
     let muLawSamples = [];
     for (let i=0; i<samples.length; i++) {
         muLawSamples.push(encodeSample(samples[i]));
@@ -93,6 +143,7 @@ function encode(samples) {
  * @return {!Array<number>}
  */
 function decode(samples) {
+  /** @type {!Array<number>} */
     let pcmSamples = [];
     for (let i=0; i<samples.length; i++) {
         pcmSamples.push(decodeSample(samples[i]));

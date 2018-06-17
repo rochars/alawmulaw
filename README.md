@@ -24,10 +24,11 @@ Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
 <script src="https://cdn.jsdelivr.net/npm/alawmulaw@3/dist/alawmulaw.min.js"></script>
 ```
 
-## A-Law
+## Use
+
+### A-Law
 Full files:
 ```javascript
-
 const alaw = require("alawmulaw").alaw;
 
 // Encode all the samples in a file
@@ -40,7 +41,6 @@ pcmSamples = alaw.decode(aLawSamples);
 
 Sample by sample:
 ```javascript
-
 const alaw = require("alawmulaw").alaw;
 
 // Encoding
@@ -50,10 +50,9 @@ aLawSample = alaw.encodeSample(pcmSample);
 pcmSample = alaw.decodeSample(aLawSample);
 ```
 
-## mu-Law
+### mu-Law
 Full files:
 ```javascript
-
 const mulaw = require("alawmulaw").mulaw;
 
 // Encode all the samples in a file
@@ -66,7 +65,6 @@ pcmSamples = mulaw.decode(muLawSamples);
 
 Sample by sample:
 ```javascript
-
 const mulaw = require("alawmulaw").mulaw;
 
 // Encoding
@@ -76,9 +74,9 @@ muLawSample = mulaw.encodeSample(pcmSample);
 pcmSample = mulaw.decodeSample(muLawSample);
 ```
 
-## In the browser
+### In the browser
 ```html
-<script src="dist/alawmulaw-min.js"></script>
+<script src="dist/alawmulaw.min.js"></script>
 <script>
     // A-Law
     samples = alawmulaw.alaw.encode(samples);
@@ -92,6 +90,70 @@ pcmSample = mulaw.decodeSample(muLawSample);
     sample = alawmulaw.mulaw.encodeSample(sample);
     sample = alawmulaw.mulaw.decodeSample(sample);
 </script>
+```
+
+## API
+
+### alawmulaw.alaw
+```javascript
+/**
+ * Encode a 16-bit linear PCM sample as 8-bit A-Law.
+ * @param {number} sample A 16-bit linear PCM sample
+ * @return {number}
+ */
+function encodeSample(sample) {}
+
+/**
+ * Decode a 8-bit A-Law sample as 16-bit linear PCM.
+ * @param {number} aLawSample The 8-bit A-Law sample
+ * @return {number}
+ */
+function decodeSample(aLawSample) {}
+
+/**
+ * Encode 16-bit linear PCM samples into 8-bit A-Law samples.
+ * @param {!Array<number>} samples A array of 16-bit PCM samples.
+ * @return {!Array<number>}
+ */
+function encode(samples) {}
+
+/**
+ * Decode 8-bit A-Law samples into 16-bit linear PCM samples.
+ * @param {!Array<number>} samples A array of 8-bit A-Law samples.
+ * @return {!Array<number>}
+ */
+function decode(samples) {}
+```
+
+### alawmulaw.mulaw
+```javascript
+/**
+ * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
+ * @param {number} pcmSample A 16-bit sample
+ * @return {number}
+ */
+function encodeSample(pcmSample) {}
+
+/**
+ * Decode a 8-bit mu-Law sample as 16-bit linear PCM.
+ * @param {number} muLawSample The 8-bit mu-Law sample
+ * @return {number}
+ */
+function decodeSample(muLawSample) {}
+
+/**
+ * Encode 16-bit linear PCM samples into 8-bit mu-Law samples.
+ * @param {!Array<number>} samples A array of 16-bit linear PCM samples.
+ * @return {!Array<number>}
+ */
+function encode(samples) {}
+
+/**
+ * Decode 8-bit mu-Law samples into 16-bit linear PCM samples.
+ * @param {!Array<number>} samples A array of 8-bit mu-Law samples.
+ * @return {!Array<number>}
+ */
+function decode(samples) {}
 ```
 
 ## References

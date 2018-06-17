@@ -1,13 +1,38 @@
 /*
- * alaw.js
- * Copyright (c) 2018 Rafael da Silva Rocha.
+ * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
  *
+ * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ */
+
+/**
+ * @fileoverview A-Law codec.
  * References:
  * https://github.com/deftio/companders
  * http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html
- * 
  */
+
+/** @module alawmulaw/alaw */
 
 /**
  * Encode a 16-bit linear PCM sample as 8-bit A-Law.
@@ -15,16 +40,22 @@
  * @return {number}
  */
 function encodeSample(sample) {
+    /** @type {number} */
     let clip = 32635;
+    /** @type {!Array<number>} */
     let logTable = [
         1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
         6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6, 
         7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7, 
         7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7 
     ];
+    /** @type {number} */
     let sign;
+    /** @type {number} */
     let exponent;
+    /** @type {number} */
     let mantissa; 
+    /** @type {number} */
     let compandedValue; 
     sample = (sample ==-32768) ? -32767 : sample;
     sign = ((~sample) >> 8) & 0x80; 
@@ -51,8 +82,11 @@ function encodeSample(sample) {
  * @return {number}
  */
 function decodeSample(aLawSample) {
+  /** @type {number} */
    let sign = 0x00;
+   /** @type {number} */
    let position = 0;
+   /** @type {number} */
    let decoded = 0;
    aLawSample ^= 0x55;
    if (aLawSample & 0x80) {
@@ -77,6 +111,7 @@ function decodeSample(aLawSample) {
  * @return {!Array<number>}
  */
 function encode(samples) {
+  /** @type {!Array<number>} */
     let aLawSamples = [];
     for (let i=0; i<samples.length; i++) {
         aLawSamples.push(encodeSample(samples[i]));
@@ -90,6 +125,7 @@ function encode(samples) {
  * @return {!Array<number>}
  */
 function decode(samples) {
+  /** @type {!Array<number>} */
     let pcmSamples = [];
     for (let i=0; i<samples.length; i++) {
         pcmSamples.push(decodeSample(samples[i]));
