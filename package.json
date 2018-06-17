@@ -24,12 +24,16 @@
   "bugs": {
     "url": "https://github.com/rochars/alawmulaw/issues"
   },
+  "directories": {
+    "doc": "./docs",
+    "lib": "./lib"
+  },
   "scripts": {
     "lint": "jshint index.js",
     "test": "nyc ./node_modules/mocha/bin/_mocha test --src --recursive",
     "test-dist": "nyc ./node_modules/mocha/bin/_mocha test  --dist --recursive",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "doc": "./node_modules/.bin/jsdoc index.js src -d docs -r README.md -t node_modules/docdash",
+    "doc": "./node_modules/.bin/jsdoc index.js lib -d docs -r README.md -t node_modules/docdash",
     "pack": "webpack && npm run test-dist",
     "build": "npm run lint && npm run test && npm run pack && npm run doc",
     "build-ci": "npm run lint && npm run pack && npm run test && npm run doc"

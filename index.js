@@ -38,9 +38,9 @@
  * @export
  * @ignore
  */
-module.exports.alaw = require("./src/alaw");
+module.exports.alaw = require("./lib/alaw");
 /**
  * @export
  * @ignore
  */
-module.exports.mulaw = require("./src/mulaw");
+module.exports.mulaw = require("./lib/mulaw");
