@@ -6,5 +6,7 @@
  * 
  */
 
+/** @export */
 module.exports.alaw = require("./src/alaw");
+/** @export */
 module.exports.mulaw = require("./src/mulaw");

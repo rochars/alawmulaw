@@ -16,7 +16,12 @@ npm install alawmulaw
 ## Browser
 Use the compiled file in the */dist* folder:
 ```html
-<script src="alawmulaw-min.js"></script>
+<script src="alawmulaw.min.js"></script>
+```
+
+Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
+```html
+<script src="https://cdn.jsdelivr.net/npm/alawmulaw@3/dist/alawmulaw.min.js"></script>
 ```
 
 ## A-Law

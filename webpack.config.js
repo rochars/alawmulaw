@@ -7,7 +7,9 @@ const ClosureCompiler = require('google-closure-compiler-js').webpack;
 module.exports = {
   entry: './index.js',
   output: {
-    filename: './dist/alawmulaw-min.js'
+    filename: './dist/alawmulaw.min.js',
+    library: 'alawmulaw',
+    libraryTarget: 'window'
   },
   plugins: [
     new ClosureCompiler({
@@ -15,29 +17,10 @@ module.exports = {
         languageIn: 'ECMASCRIPT6',
         languageOut: 'ECMASCRIPT5',
         compilationLevel: 'ADVANCED',
-        warningLevel: "VERBOSE"
+        warningLevel: "VERBOSE",
+        exportLocalPropertyDefinitions: true,
+        generateExports: true
       }
     })
-  ],
-  module: {
-    loaders: [
-      {
-        test:  /index\.js$/,
-        loader: 'string-replace-loader',
-        query: {
-          multiple: [
-            {
-              search: 'module.exports.alaw = ',
-              replace: "window['alawmulaw'] = window['alawmulaw'] || {};" + 
-                       "window['alawmulaw']['alaw'] = "
-            },
-            {
-              search: 'module.exports.mulaw = ',
-              replace: "window['alawmulaw']['mulaw'] = ",
-            },
-          ]
-        }
-      }
-    ]
-  }
+  ]
 };

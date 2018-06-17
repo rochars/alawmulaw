@@ -97,7 +97,11 @@ function decode(samples) {
     return pcmSamples;
 }
 
+/** @export */
 module.exports.encodeSample = encodeSample;
+/** @export */
 module.exports.decodeSample = decodeSample;
+/** @export */
 module.exports.encode = encode;
+/** @export */
 module.exports.decode = decode;

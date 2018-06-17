@@ -1,12 +1,11 @@
 {
   "name": "alawmulaw",
-  "version": "2.0.7",
+  "version": "3.0.0-alpha.0",
   "description": "A-Law and mu-Law codecs in JavaScript.",
   "homepage": "https://github.com/rochars/alawmulaw",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",
   "keywords": [
-    "wav",
     "A-Law",
     "mu-Law",
     "audio",
@@ -16,14 +15,14 @@
     "compander",
     "companding",
     "PCM",
-    "file",
-    "streaming",
-    "browser",
-    "node"
+    "streaming"
   ],
   "repository": {
     "type": "git",
     "url": "git://github.com/rochars/alawmulaw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rochars/alawmulaw/issues"
   },
   "scripts": {
     "lint": "jshint index.js",
@@ -48,6 +47,5 @@
     "string-replace-loader": "^1.3.0",
     "webpack": "^3.8.1"
   },
-  "dependencies": {},
   "main": "index.js"
 }
