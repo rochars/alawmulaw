@@ -109,7 +109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 /**
- * @fileoverview The alawmulaw public API.
+ * @fileoverview The alawmulaw API.
  */
 
 /**
@@ -118,8 +118,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 const alawmulaw = {
+	/**
+	 * @type {!Object}
+	 * @export
+	 */
 	'alaw': __WEBPACK_IMPORTED_MODULE_0__lib_alaw__,
+	/**
+	 * @type {!Object}
+	 * @export
+	 */
 	'mulaw': __WEBPACK_IMPORTED_MODULE_1__lib_mulaw__
 };
 /* harmony export (immutable) */ __webpack_exports__["alawmulaw"] = alawmulaw;

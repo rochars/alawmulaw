@@ -26,7 +26,7 @@
  */
 
 /**
- * @fileoverview The alawmulaw public API.
+ * @fileoverview The alawmulaw API.
  */
 
 /**
@@ -35,7 +35,16 @@
 
 import * as alaw from './lib/alaw';
 import * as mulaw from './lib/mulaw';
+
 export const alawmulaw = {
+	/**
+	 * @type {!Object}
+	 * @export
+	 */
 	'alaw': alaw,
+	/**
+	 * @type {!Object}
+	 * @export
+	 */
 	'mulaw': mulaw
 };
