@@ -31,16 +31,11 @@
 
 /**
  * @module alawmulaw
- * @ignore
  */
 
-/**
- * @export
- * @ignore
- */
-module.exports.alaw = require("./lib/alaw");
-/**
- * @export
- * @ignore
- */
-module.exports.mulaw = require("./lib/mulaw");
+import * as alaw from './lib/alaw';
+import * as mulaw from './lib/mulaw';
+export const alawmulaw = {
+	'alaw': alaw,
+	'mulaw': mulaw
+};

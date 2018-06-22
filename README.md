@@ -21,7 +21,12 @@ Use the compiled file in the */dist* folder:
 
 Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/alawmulaw@3/dist/alawmulaw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alawmulaw@4"></script>
+```
+
+Or get it from [unpkg](https://www.unpkg.com):
+```html
+<script src="https://unpkg.com/alawmulaw@4"></script>
 ```
 
 ## Use
@@ -161,7 +166,10 @@ https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c
 https://github.com/deftio/companders  
 http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html
 
-## LICENSE
+## Legal
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frochars%2Falawmulaw.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frochars%2Falawmulaw?ref=badge_large)
+
+### LICENSE
 Copyright (c) 2018 Rafael da Silva Rocha.
 
 Permission is hereby granted, free of charge, to any person obtaining
