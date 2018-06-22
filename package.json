@@ -1,6 +1,6 @@
 {
   "name": "alawmulaw",
-  "version": "4.0.0-alpha.1",
+  "version": "4.0.0",
   "description": "A-Law and mu-Law codecs in JavaScript.",
   "homepage": "https://github.com/rochars/alawmulaw",
   "author": "Rafael S. Rocha <rocha.rafaelsilva@gmail.com>",
@@ -37,7 +37,7 @@
     "lib": "./lib"
   },
   "scripts": {
-    "lint": "jshint index.js",
+    "lint": "jshint index.js lib",
     "test": "nyc --require=esm ./node_modules/mocha/bin/_mocha test --recursive -R min",
     "test-min": "node ./node_modules/mocha/bin/_mocha test --min --recursive -R min",
     "test-cjs": "node ./node_modules/mocha/bin/_mocha test --cjs --recursive -R min",
