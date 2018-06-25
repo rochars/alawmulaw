@@ -15,7 +15,7 @@ npm install alawmulaw
 ## Use
 
 ### ES6
-import WaveFile from **alawmulaw.js**:
+import alawmulaw from **alawmulaw.js**:
 ```javascript
 import alawmulaw from 'alawmulaw.js';
 let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
