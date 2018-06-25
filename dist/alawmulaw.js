@@ -34,6 +34,14 @@
 
 /** @module alawmulaw/alaw */
 
+/** @type {!Array<number>} */
+const LOG_TABLE = [
+  1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
+  6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6, 
+  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7, 
+  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7 
+];
+
 /**
  * Encode a 16-bit linear PCM sample as 8-bit A-Law.
  * @param {number} sample A 16-bit linear PCM sample
@@ -119,14 +127,6 @@ function decode(samples) {
   return pcmSamples;
 }
 
-/** @type {!Array<number>} */
-const LOG_TABLE = [
-  1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
-  6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6, 
-  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7, 
-  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7 
-];
-
 var alaw = /*#__PURE__*/Object.freeze({
   encodeSample: encodeSample,
   decodeSample: decodeSample,
@@ -168,6 +168,12 @@ var alaw = /*#__PURE__*/Object.freeze({
  */
 
 /** @module alawmulaw/mulaw */
+
+/**
+ * @type {number}
+ * @private
+ */
+const BIAS = 0x84;
 
 /**
  * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
@@ -257,13 +263,6 @@ function segmentValue_(sample) {
   }
   return segment;
 }
-
-
-/**
- * @type {number}
- * @private
- */
-const BIAS = 0x84;
 
 var mulaw = /*#__PURE__*/Object.freeze({
   encodeSample: encodeSample$1,

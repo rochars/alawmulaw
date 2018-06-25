@@ -141,6 +141,14 @@ __webpack_require__.d(mulaw_namespaceObject, "decode", function() { return mulaw
 
 /** @module alawmulaw/alaw */
 
+/** @type {!Array<number>} */
+const LOG_TABLE = [
+  1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
+  6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6, 
+  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7, 
+  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7 
+];
+
 /**
  * Encode a 16-bit linear PCM sample as 8-bit A-Law.
  * @param {number} sample A 16-bit linear PCM sample
@@ -226,14 +234,6 @@ function decode(samples) {
   return pcmSamples;
 }
 
-/** @type {!Array<number>} */
-const LOG_TABLE = [
-  1,1,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5, 
-  6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6, 
-  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7, 
-  7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7 
-];
-
 // CONCATENATED MODULE: ./lib/mulaw.js
 /*
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
@@ -269,6 +269,12 @@ const LOG_TABLE = [
  */
 
 /** @module alawmulaw/mulaw */
+
+/**
+ * @type {number}
+ * @private
+ */
+const BIAS = 0x84;
 
 /**
  * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
@@ -359,12 +365,6 @@ function segmentValue_(sample) {
   return segment;
 }
 
-
-/**
- * @type {number}
- * @private
- */
-const BIAS = 0x84;
 // CONCATENATED MODULE: ./index.js
 /*
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
