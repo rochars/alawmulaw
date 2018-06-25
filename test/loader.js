@@ -8,21 +8,30 @@ let alawmulaw;
 
 // Browser
 if (process.argv[3] == '--min') {
+    console.log('browser');
     require('browser-env')();
     require('../dist/alawmulaw.min.js');
     alawmulaw = window.alawmulaw;
 
 // UMD
 } else if (process.argv[3] == '--umd') {
-	alawmulaw = require('../dist/alawmulaw.umd.js').alawmulaw;
+	console.log('umd');
+	alawmulaw = require('../dist/alawmulaw.umd.js');
 
 // CommonJS
 } else if (process.argv[3] == '--cjs') {
-	alawmulaw = require('../dist/alawmulaw.cjs.js').alawmulaw;
+	console.log('cjs');
+	alawmulaw = require('../dist/alawmulaw.cjs.js');
 
-// ESM
+// esm
+} else if (process.argv[3] == '--esm') {
+	console.log('esm');
+	alawmulaw = require('../dist/alawmulaw.js').default;
+
+// source
 } else {
-	alawmulaw = require('../index.js').alawmulaw;
+	console.log('source');
+	alawmulaw = require('../index.js').default;
 }
 
 module.exports = alawmulaw;

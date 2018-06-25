@@ -1,5 +1,3 @@
-'use strict';
-
 /*
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
@@ -314,4 +312,4 @@ var index = {
 	'mulaw': mulaw
 };
 
-module.exports = index;
+export default index;

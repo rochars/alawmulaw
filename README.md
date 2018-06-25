@@ -5,7 +5,6 @@ https://github.com/rochars/alawmulaw
 [![NPM version](https://img.shields.io/npm/v/alawmulaw.svg?style=for-the-badge)](https://www.npmjs.com/package/alawmulaw) [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge)](https://rochars.github.io/alawmulaw/index.html)  
 [![Codecov](https://img.shields.io/codecov/c/github/rochars/alawmulaw.svg?style=flat-square)](https://codecov.io/gh/rochars/alawmulaw) [![Unix Build](https://img.shields.io/travis/rochars/alawmulaw.svg?style=flat-square)](https://travis-ci.org/rochars/alawmulaw) [![Windows Build](https://img.shields.io/appveyor/ci/rochars/alawmulaw.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/rochars/alawmulaw) [![Scrutinizer](https://img.shields.io/scrutinizer/g/rochars/alawmulaw.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/rochars/alawmulaw/)
 
-## About
 A-Law and mu-Law codecs in JavaScript.
 
 ## Install
@@ -13,10 +12,41 @@ A-Law and mu-Law codecs in JavaScript.
 npm install alawmulaw
 ```
 
-## Browser
+## Use
+
+### ES6
+import WaveFile from **alawmulaw.js**:
+```javascript
+import alawmulaw from 'alawmulaw.js';
+let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
+```
+
+### Node
+```javascript
+const alawmulaw = require("alawmulaw");
+
+// Encode all the samples in a file
+// Only 16-bit samples are supported
+let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
+```
+
+### Browser
 Use the compiled file in the */dist* folder:
 ```html
 <script src="alawmulaw.min.js"></script>
+<script>
+    // A-Law
+    samples = alawmulaw.alaw.encode(samples);
+    samples = alawmulaw.alaw.decode(samples);
+    sample = alawmulaw.alaw.encodeSample(sample);
+    sample = alawmulaw.alaw.decodeSample(sample);
+
+    // mu-Law
+    samples = alawmulaw.mulaw.encode(samples);
+    samples = alawmulaw.mulaw.decode(samples);
+    sample = alawmulaw.mulaw.encodeSample(sample);
+    sample = alawmulaw.mulaw.decodeSample(sample);
+</script>
 ```
 
 Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
@@ -29,7 +59,15 @@ Or get it from [unpkg](https://www.unpkg.com):
 <script src="https://unpkg.com/alawmulaw@4"></script>
 ```
 
-## Use
+Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
+```html
+<script type="module">
+  import alawmulaw from 'https://dev.jspm.io/alawmulaw';
+  // ...
+</script>
+```
+
+## Encode / Decode:
 
 ### A-Law
 Full files:
@@ -77,24 +115,6 @@ muLawSample = mulaw.encodeSample(pcmSample);
 
 // Decoding
 pcmSample = mulaw.decodeSample(muLawSample);
-```
-
-### In the browser
-```html
-<script src="dist/alawmulaw.min.js"></script>
-<script>
-    // A-Law
-    samples = alawmulaw.alaw.encode(samples);
-    samples = alawmulaw.alaw.decode(samples);
-    sample = alawmulaw.alaw.encodeSample(sample);
-    sample = alawmulaw.alaw.decodeSample(sample);
-
-    // mu-Law
-    samples = alawmulaw.mulaw.encode(samples);
-    samples = alawmulaw.mulaw.decode(samples);
-    sample = alawmulaw.mulaw.encodeSample(sample);
-    sample = alawmulaw.mulaw.decodeSample(sample);
-</script>
 ```
 
 ## API
@@ -161,13 +181,20 @@ function encode(samples) {}
 function decode(samples) {}
 ```
 
+## Distribution
+This library is a ES6 module also distributed as a CommonJS module, UMD and a compiled script for browsers.
+
+- The **CommonJS** is the one used by Node. It is served in the "main" field of package.json
+- The **UMD** module is compatible with Node, AMD and browsers. It is served in the "browser" field.
+- The **compiled dist** is browser-only and should be the one served by CDNs.
+- The **ES6** dist is **alawmulaw.js**, served as "module" in package.json
+
+You may load both **alawmulaw.umd.js** and **alawmulaw.min.js** in the browser with ```<script>``` tags.
+
 ## References
 https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c  
 https://github.com/deftio/companders  
 http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html
-
-## Legal
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Frochars%2Falawmulaw.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Frochars%2Falawmulaw?ref=badge_large)
 
 ### LICENSE
 Copyright (c) 2018 Rafael da Silva Rocha.

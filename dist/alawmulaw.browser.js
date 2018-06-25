@@ -1,5 +1,110 @@
-'use strict';
+window["alawmulaw"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var alaw_namespaceObject = {};
+__webpack_require__.r(alaw_namespaceObject);
+__webpack_require__.d(alaw_namespaceObject, "encodeSample", function() { return encodeSample; });
+__webpack_require__.d(alaw_namespaceObject, "decodeSample", function() { return decodeSample; });
+__webpack_require__.d(alaw_namespaceObject, "encode", function() { return encode; });
+__webpack_require__.d(alaw_namespaceObject, "decode", function() { return decode; });
+var mulaw_namespaceObject = {};
+__webpack_require__.r(mulaw_namespaceObject);
+__webpack_require__.d(mulaw_namespaceObject, "encodeSample", function() { return mulaw_encodeSample; });
+__webpack_require__.d(mulaw_namespaceObject, "decodeSample", function() { return mulaw_decodeSample; });
+__webpack_require__.d(mulaw_namespaceObject, "encode", function() { return mulaw_encode; });
+__webpack_require__.d(mulaw_namespaceObject, "decode", function() { return mulaw_decode; });
+
+// CONCATENATED MODULE: ./lib/alaw.js
 /*
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
@@ -129,13 +234,7 @@ const LOG_TABLE = [
   7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7 
 ];
 
-var alaw = /*#__PURE__*/Object.freeze({
-  encodeSample: encodeSample,
-  decodeSample: decodeSample,
-  encode: encode,
-  decode: decode
-});
-
+// CONCATENATED MODULE: ./lib/mulaw.js
 /*
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
@@ -176,7 +275,7 @@ var alaw = /*#__PURE__*/Object.freeze({
  * @param {number} pcmSample A 16-bit sample
  * @return {number}
  */
-function encodeSample$1(pcmSample) {
+function mulaw_encodeSample(pcmSample) {
   /** @type {number} */
   let mask = 0xFF;
   if (pcmSample < 0) {
@@ -200,7 +299,7 @@ function encodeSample$1(pcmSample) {
  * @param {number} muLawSample The 8-bit mu-Law sample
  * @return {number}
  */
-function decodeSample$1(muLawSample) {
+function mulaw_decodeSample(muLawSample) {
   muLawSample = ~muLawSample;
   /** @type {number} */
   let t = ((muLawSample & 0xf) << 3) + BIAS;
@@ -213,11 +312,11 @@ function decodeSample$1(muLawSample) {
  * @param {!Array<number>} samples A array of 16-bit linear PCM samples.
  * @return {!Array<number>}
  */
-function encode$1(samples) {
+function mulaw_encode(samples) {
   /** @type {!Array<number>} */
   let muLawSamples = [];
   for (let i=0; i<samples.length; i++) {
-    muLawSamples.push(encodeSample$1(samples[i]));
+    muLawSamples.push(mulaw_encodeSample(samples[i]));
   }
   return muLawSamples;
 }
@@ -227,11 +326,11 @@ function encode$1(samples) {
  * @param {!Array<number>} samples A array of 8-bit mu-Law samples.
  * @return {!Array<number>}
  */
-function decode$1(samples) {
+function mulaw_decode(samples) {
   /** @type {!Array<number>} */
   let pcmSamples = [];
   for (let i=0; i<samples.length; i++) {
-    pcmSamples.push(decodeSample$1(samples[i]));
+    pcmSamples.push(mulaw_decodeSample(samples[i]));
   }
   return pcmSamples;
 }
@@ -266,14 +365,7 @@ function segmentValue_(sample) {
  * @private
  */
 const BIAS = 0x84;
-
-var mulaw = /*#__PURE__*/Object.freeze({
-  encodeSample: encodeSample$1,
-  decodeSample: decodeSample$1,
-  encode: encode$1,
-  decode: decode$1
-});
-
+// CONCATENATED MODULE: ./index.js
 /*
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
@@ -301,17 +393,30 @@ var mulaw = /*#__PURE__*/Object.freeze({
  *
  */
 
-var index = {
-	/**
-	 * @type {!Object}
-	 * @export
-	 */
-	'alaw': alaw,
-	/**
-	 * @type {!Object}
-	 * @export
-	 */
-	'mulaw': mulaw
-};
+/**
+ * @fileoverview The alawmulaw API.
+ */
 
-module.exports = index;
+/**
+ * @module alawmulaw
+ */
+
+
+
+
+/* harmony default export */ var index = __webpack_exports__["default"] = ({
+	/**
+	 * @type {!Object}
+	 * @export
+	 */
+	'alaw': alaw_namespaceObject,
+	/**
+	 * @type {!Object}
+	 * @export
+	 */
+	'mulaw': mulaw_namespaceObject
+});
+
+
+/***/ })
+/******/ ]);

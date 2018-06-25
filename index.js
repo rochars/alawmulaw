@@ -36,7 +36,7 @@
 import * as alaw from './lib/alaw';
 import * as mulaw from './lib/mulaw';
 
-export const alawmulaw = {
+export default {
 	/**
 	 * @type {!Object}
 	 * @export
