@@ -2,7 +2,7 @@
  * alawmulaw: A-Law and mu-Law codecs in JavaScript.
  * https://github.com/rochars/alawmulaw
  *
- * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+ * Copyright (c) 2018 Rafael da Silva Rocha.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -36,15 +36,4 @@
 import * as alaw from './lib/alaw';
 import * as mulaw from './lib/mulaw';
 
-export default {
-	/**
-	 * @type {!Object}
-	 * @export
-	 */
-	'alaw': alaw,
-	/**
-	 * @type {!Object}
-	 * @export
-	 */
-	'mulaw': mulaw
-};
+export {alaw, mulaw};

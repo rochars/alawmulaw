@@ -1,14 +1,14 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.alawmulaw = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.alawmulaw = {})));
+}(this, (function (exports) { 'use strict';
 
   /*
    * alawmulaw: A-Law and mu-Law codecs in JavaScript.
    * https://github.com/rochars/alawmulaw
    *
-   * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+   * Copyright (c) 2018 Rafael da Silva Rocha.
    *
    * Permission is hereby granted, free of charge, to any person obtaining
    * a copy of this software and associated documentation files (the
@@ -33,9 +33,6 @@
 
   /**
    * @fileoverview A-Law codec.
-   * References:
-   * https://github.com/deftio/companders
-   * http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html
    */
 
   /** @module alawmulaw/alaw */
@@ -50,7 +47,7 @@
 
   /**
    * Encode a 16-bit linear PCM sample as 8-bit A-Law.
-   * @param {number} sample A 16-bit linear PCM sample
+   * @param {number} sample A 16-bit PCM sample
    * @return {number}
    */
   function encodeSample(sample) {
@@ -78,7 +75,7 @@
   }
 
   /**
-   * Decode a 8-bit A-Law sample as 16-bit linear PCM.
+   * Decode a 8-bit A-Law sample as 16-bit PCM.
    * @param {number} aLawSample The 8-bit A-Law sample
    * @return {number}
    */
@@ -106,29 +103,29 @@
   }
 
   /**
-   * Encode 16-bit linear PCM samples into 8-bit A-Law samples.
-   * @param {!Array<number>} samples A array of 16-bit PCM samples.
-   * @return {!Array<number>}
+   * Encode 16-bit linear PCM samples as 8-bit A-Law samples.
+   * @param {!Int16Array} samples A array of 16-bit PCM samples.
+   * @return {!Uint8Array}
    */
   function encode(samples) {
-    /** @type {!Array<number>} */
-    let aLawSamples = [];
+    /** @type {!Uint8Array} */
+    let aLawSamples = new Uint8Array(samples.length);
     for (let i=0; i<samples.length; i++) {
-      aLawSamples.push(encodeSample(samples[i]));
+      aLawSamples[i] = encodeSample(samples[i]);
     }
     return aLawSamples;
   }
 
   /**
    * Decode 8-bit A-Law samples into 16-bit linear PCM samples.
-   * @param {!Array<number>} samples A array of 8-bit A-Law samples.
-   * @return {!Array<number>}
+   * @param {!Uint8Array} samples A array of 8-bit A-Law samples.
+   * @return {!Int16Array}
    */
   function decode(samples) {
-    /** @type {!Array<number>} */
-    let pcmSamples = [];
+    /** @type {!Int16Array} */
+    let pcmSamples = new Int16Array(samples.length);
     for (let i=0; i<samples.length; i++) {
-      pcmSamples.push(decodeSample(samples[i]));
+      pcmSamples[i] = decodeSample(samples[i]);
     }
     return pcmSamples;
   }
@@ -144,7 +141,7 @@
    * alawmulaw: A-Law and mu-Law codecs in JavaScript.
    * https://github.com/rochars/alawmulaw
    *
-   * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+   * Copyright (c) 2018 Rafael da Silva Rocha.
    *
    * Permission is hereby granted, free of charge, to any person obtaining
    * a copy of this software and associated documentation files (the
@@ -169,8 +166,6 @@
 
   /**
    * @fileoverview mu-Law codec.
-   * References:
-   * https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c
    */
 
   /** @module alawmulaw/mulaw */
@@ -183,30 +178,30 @@
 
   /**
    * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
-   * @param {number} pcmSample A 16-bit sample
+   * @param {number} sample A 16-bit PCM sample
    * @return {number}
    */
-  function encodeSample$1(pcmSample) {
+  function encodeSample$1(sample) {
     /** @type {number} */
     let mask = 0xFF;
-    if (pcmSample < 0) {
-      pcmSample = BIAS - pcmSample;
+    if (sample < 0) {
+      sample = BIAS - sample;
       mask = 0x7F;
     } else {
-      pcmSample += BIAS;
+      sample += BIAS;
     }
-    if (pcmSample > 0x7FFF) {
-      pcmSample = 0x7FFF;
+    if (sample > 0x7FFF) {
+      sample = 0x7FFF;
     }
     /** @type {number} */
-    let seg = segmentValue_(pcmSample);
+    let seg = segmentValue_(sample);
     /** @type {number} */
-    let uval = (seg << 4) | ((pcmSample >> (seg + 3)) & 0xF);
+    let uval = (seg << 4) | ((sample >> (seg + 3)) & 0xF);
     return uval ^ mask;
   }
 
   /**
-   * Decode a 8-bit mu-Law sample as 16-bit linear PCM.
+   * Decode a 8-bit mu-Law sample as 16-bit PCM.
    * @param {number} muLawSample The 8-bit mu-Law sample
    * @return {number}
    */
@@ -220,28 +215,28 @@
 
   /**
    * Encode 16-bit linear PCM samples into 8-bit mu-Law samples.
-   * @param {!Array<number>} samples A array of 16-bit linear PCM samples.
-   * @return {!Array<number>}
+   * @param {!Int16Array} samples A array of 16-bit PCM samples.
+   * @return {!Uint8Array}
    */
   function encode$1(samples) {
-    /** @type {!Array<number>} */
-    let muLawSamples = [];
+    /** @type {!Uint8Array} */
+    let muLawSamples = new Uint8Array(samples.length);
     for (let i=0; i<samples.length; i++) {
-      muLawSamples.push(encodeSample$1(samples[i]));
+      muLawSamples[i] = encodeSample$1(samples[i]);
     }
     return muLawSamples;
   }
 
   /**
-   * Decode 8-bit mu-Law samples into 16-bit linear PCM samples.
-   * @param {!Array<number>} samples A array of 8-bit mu-Law samples.
-   * @return {!Array<number>}
+   * Decode 8-bit mu-Law samples into 16-bit PCM samples.
+   * @param {!Uint8Array} samples A array of 8-bit mu-Law samples.
+   * @return {!Int16Array}
    */
   function decode$1(samples) {
-    /** @type {!Array<number>} */
-    let pcmSamples = [];
+    /** @type {!Int16Array} */
+    let pcmSamples = new Int16Array(samples.length);
     for (let i=0; i<samples.length; i++) {
-      pcmSamples.push(decodeSample$1(samples[i]));
+      pcmSamples[i] = decodeSample$1(samples[i]);
     }
     return pcmSamples;
   }
@@ -281,7 +276,7 @@
    * alawmulaw: A-Law and mu-Law codecs in JavaScript.
    * https://github.com/rochars/alawmulaw
    *
-   * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+   * Copyright (c) 2018 Rafael da Silva Rocha.
    *
    * Permission is hereby granted, free of charge, to any person obtaining
    * a copy of this software and associated documentation files (the
@@ -304,19 +299,9 @@
    *
    */
 
-  var index = {
-  	/**
-  	 * @type {!Object}
-  	 * @export
-  	 */
-  	'alaw': alaw,
-  	/**
-  	 * @type {!Object}
-  	 * @export
-  	 */
-  	'mulaw': mulaw
-  };
+  exports.alaw = alaw;
+  exports.mulaw = mulaw;
 
-  return index;
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

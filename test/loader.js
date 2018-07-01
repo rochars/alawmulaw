@@ -26,12 +26,12 @@ if (process.argv[3] == '--min') {
 // esm
 } else if (process.argv[3] == '--esm') {
 	console.log('esm');
-	alawmulaw = require('../dist/alawmulaw.js').default;
+	alawmulaw = require('../dist/alawmulaw.js');
 
 // source
 } else {
 	console.log('source');
-	alawmulaw = require('../index.js').default;
+	alawmulaw = require('../index.js');
 }
 
 module.exports = alawmulaw;

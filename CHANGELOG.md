@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.0.0 (2018-07-01)
+- Add TypeScript declaration
+- Using typed arrays for input and ouput
+- ES module API changed; export {alaw, mulaw} instead of default alawmulaw
+
 ## v4.1.0 (2018-06-25)
 - Allow better use of this lib as a dependency:
 	- package.json refactored with bundlers and ES6 envs in mind

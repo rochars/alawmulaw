@@ -15,15 +15,16 @@ npm install alawmulaw
 ## Use
 
 ### ES6
-import alawmulaw from **alawmulaw.js**:
+Import from **alawmulaw.js**:
 ```javascript
-import alawmulaw from 'alawmulaw.js';
+import * as alawmulaw from 'alawmulaw';
 let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
 ```
 
 ### Node
+Require from 'alawmulaw'
 ```javascript
-const alawmulaw = require("alawmulaw");
+const alawmulaw = require('alawmulaw');
 
 // Encode all the samples in a file
 // Only 16-bit samples are supported
@@ -51,18 +52,18 @@ Use the compiled file in the */dist* folder:
 
 Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/alawmulaw@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/alawmulaw"></script>
 ```
 
 Or get it from [unpkg](https://www.unpkg.com):
 ```html
-<script src="https://unpkg.com/alawmulaw@4"></script>
+<script src="https://unpkg.com/alawmulaw"></script>
 ```
 
 Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
 ```html
 <script type="module">
-  import alawmulaw from 'https://dev.jspm.io/alawmulaw';
+  import * as alawmulaw from 'https://dev.jspm.io/alawmulaw';
   // ...
 </script>
 ```
@@ -72,7 +73,7 @@ Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
 ### A-Law
 Full files:
 ```javascript
-const alaw = require("alawmulaw").alaw;
+const alaw = require('alawmulaw').alaw;
 
 // Encode all the samples in a file
 // Only 16-bit samples are supported
@@ -84,7 +85,7 @@ pcmSamples = alaw.decode(aLawSamples);
 
 Sample by sample:
 ```javascript
-const alaw = require("alawmulaw").alaw;
+const alaw = require('alawmulaw').alaw;
 
 // Encoding
 aLawSample = alaw.encodeSample(pcmSample);
@@ -96,7 +97,7 @@ pcmSample = alaw.decodeSample(aLawSample);
 ### mu-Law
 Full files:
 ```javascript
-const mulaw = require("alawmulaw").mulaw;
+const mulaw = require('alawmulaw').mulaw;
 
 // Encode all the samples in a file
 // Only 16-bit samples are supported
@@ -108,7 +109,7 @@ pcmSamples = mulaw.decode(muLawSamples);
 
 Sample by sample:
 ```javascript
-const mulaw = require("alawmulaw").mulaw;
+const mulaw = require('alawmulaw').mulaw;
 
 // Encoding
 muLawSample = mulaw.encodeSample(pcmSample);
@@ -121,75 +122,66 @@ pcmSample = mulaw.decodeSample(muLawSample);
 
 ### alawmulaw.alaw
 ```javascript
-/**
- * Encode a 16-bit linear PCM sample as 8-bit A-Law.
- * @param {number} sample A 16-bit linear PCM sample
- * @return {number}
- */
-function encodeSample(sample) {}
 
 /**
- * Decode a 8-bit A-Law sample as 16-bit linear PCM.
+ * Encode a 16-bit linear PCM sample as 8-bit A-Law.
+ * @param {number} sample A 16-bit PCM sample
+ * @return {number}
+ */
+export function encodeSample(sample) {}
+
+/**
+ * Decode a 8-bit A-Law sample as 16-bit PCM.
  * @param {number} aLawSample The 8-bit A-Law sample
  * @return {number}
  */
-function decodeSample(aLawSample) {}
+export function decodeSample(aLawSample) {}
 
 /**
- * Encode 16-bit linear PCM samples into 8-bit A-Law samples.
- * @param {!Array<number>} samples A array of 16-bit PCM samples.
- * @return {!Array<number>}
+ * Encode 16-bit linear PCM samples as 8-bit A-Law samples.
+ * @param {!Int16Array} samples A array of 16-bit PCM samples.
+ * @return {!Uint8Array}
  */
-function encode(samples) {}
+export function encode(samples) {}
 
 /**
  * Decode 8-bit A-Law samples into 16-bit linear PCM samples.
- * @param {!Array<number>} samples A array of 8-bit A-Law samples.
- * @return {!Array<number>}
+ * @param {!Uint8Array} samples A array of 8-bit A-Law samples.
+ * @return {!Int16Array}
  */
-function decode(samples) {}
+export function decode(samples) {}
 ```
 
 ### alawmulaw.mulaw
 ```javascript
 /**
  * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
- * @param {number} pcmSample A 16-bit sample
+ * @param {number} sample A 16-bit PCM sample
  * @return {number}
  */
-function encodeSample(pcmSample) {}
+export function encodeSample(sample) {}
 
 /**
- * Decode a 8-bit mu-Law sample as 16-bit linear PCM.
+ * Decode a 8-bit mu-Law sample as 16-bit PCM.
  * @param {number} muLawSample The 8-bit mu-Law sample
  * @return {number}
  */
-function decodeSample(muLawSample) {}
+export function decodeSample(muLawSample) {}
 
 /**
  * Encode 16-bit linear PCM samples into 8-bit mu-Law samples.
- * @param {!Array<number>} samples A array of 16-bit linear PCM samples.
- * @return {!Array<number>}
+ * @param {!Int16Array} samples A array of 16-bit PCM samples.
+ * @return {!Uint8Array}
  */
-function encode(samples) {}
+export function encode(samples) {}
 
 /**
- * Decode 8-bit mu-Law samples into 16-bit linear PCM samples.
- * @param {!Array<number>} samples A array of 8-bit mu-Law samples.
- * @return {!Array<number>}
+ * Decode 8-bit mu-Law samples into 16-bit PCM samples.
+ * @param {!Uint8Array} samples A array of 8-bit mu-Law samples.
+ * @return {!Int16Array}
  */
-function decode(samples) {}
+export function decode(samples) {}
 ```
-
-## Distribution
-This library is a ES6 module also distributed as a CommonJS module, UMD and a compiled script for browsers.
-
-- The **CommonJS** is the one used by Node. It is served in the "main" field of package.json
-- The **UMD** module is compatible with Node, AMD and browsers. It is served in the "browser" field.
-- The **compiled dist** is browser-only and should be the one served by CDNs.
-- The **ES6** dist is **alawmulaw.js**, served as "module" in package.json
-
-You may load both **alawmulaw.umd.js** and **alawmulaw.min.js** in the browser with ```<script>``` tags.
 
 ## References
 https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c  
