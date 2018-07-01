@@ -17,7 +17,7 @@ npm install alawmulaw
 ### ES6
 Import from **alawmulaw.js**:
 ```javascript
-import * as alawmulaw from 'alawmulaw';
+import * as alawmulaw from 'alawmulaw.js';
 let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
 ```
 
@@ -66,56 +66,6 @@ Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
   import * as alawmulaw from 'https://dev.jspm.io/alawmulaw';
   // ...
 </script>
-```
-
-## Encode / Decode:
-
-### A-Law
-Full files:
-```javascript
-const alaw = require('alawmulaw').alaw;
-
-// Encode all the samples in a file
-// Only 16-bit samples are supported
-aLawSamples = alaw.encode(pcmSamples);
-
-// Decompressing all the samples in a file
-pcmSamples = alaw.decode(aLawSamples);
-```
-
-Sample by sample:
-```javascript
-const alaw = require('alawmulaw').alaw;
-
-// Encoding
-aLawSample = alaw.encodeSample(pcmSample);
-
-// Decoding
-pcmSample = alaw.decodeSample(aLawSample);
-```
-
-### mu-Law
-Full files:
-```javascript
-const mulaw = require('alawmulaw').mulaw;
-
-// Encode all the samples in a file
-// Only 16-bit samples are supported
-muLawSamples = mulaw.encode(pcmSamples);
-
-// Decode all the samples in a file
-pcmSamples = mulaw.decode(muLawSamples);
-```
-
-Sample by sample:
-```javascript
-const mulaw = require('alawmulaw').mulaw;
-
-// Encoding
-muLawSample = mulaw.encodeSample(pcmSample);
-
-// Decoding
-pcmSample = mulaw.decodeSample(muLawSample);
 ```
 
 ## API
