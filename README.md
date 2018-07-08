@@ -14,13 +14,6 @@ npm install alawmulaw
 
 ## Use
 
-### ES6
-Import from **alawmulaw.js**:
-```javascript
-import * as alawmulaw from 'alawmulaw.js';
-let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
-```
-
 ### Node
 Require from 'alawmulaw'
 ```javascript
@@ -31,10 +24,17 @@ const alawmulaw = require('alawmulaw');
 let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
 ```
 
+### ES module
+Import from **alawmulaw.js**:
+```javascript
+import * as alawmulaw from './dist/alawmulaw.js';
+let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
+```
+
 ### Browser
 Use the compiled file in the */dist* folder:
 ```html
-<script src="alawmulaw.min.js"></script>
+<script src="./dist/alawmulaw.min.js"></script>
 <script>
     // A-Law
     samples = alawmulaw.alaw.encode(samples);

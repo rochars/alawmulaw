@@ -169,6 +169,37 @@ var alaw = /*#__PURE__*/Object.freeze({
  * @private
  */
 const BIAS = 0x84;
+/**
+ * @type {number}
+ * @private
+ */
+const CLIP = 32635;
+/**
+ * @type {Array<number>}
+ * @private
+ */
+const encodeTable = [
+    0,0,1,1,2,2,2,2,3,3,3,3,3,3,3,3,
+    4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+    5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+    5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+    6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+    6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+    6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+    6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
+    7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7];
+/**
+ * @type {Array<number>}
+ * @private
+ */
+const decodeTable = [0,132,396,924,1980,4092,8316,16764];
 
 /**
  * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
@@ -177,21 +208,24 @@ const BIAS = 0x84;
  */
 function encodeSample$1(sample) {
   /** @type {number} */
-  let mask = 0xFF;
-  if (sample < 0) {
-    sample = BIAS - sample;
-    mask = 0x7F;
-  } else {
-    sample += BIAS;
-  }
-  if (sample > 0x7FFF) {
-    sample = 0x7FFF;
-  }
+  let sign;
   /** @type {number} */
-  let seg = segmentValue_(sample);
+  let exponent;
   /** @type {number} */
-  let uval = (seg << 4) | ((sample >> (seg + 3)) & 0xF);
-  return uval ^ mask;
+  let mantissa;
+  /** @type {number} */
+  let muLawSample;
+  /** get the sample into sign-magnitude **/
+  sign = (sample >> 8) & 0x80;
+  if (sign != 0) sample = -sample;
+  if (sample > CLIP) sample = CLIP;
+  /** convert from 16 bit linear to ulaw **/
+  sample = sample + BIAS;
+  exponent = encodeTable[(sample>>7) & 0xFF];
+  mantissa = (sample >> (exponent+3)) & 0x0F;
+  muLawSample = ~(sign | (exponent << 4) | mantissa);
+  /** return the result **/
+  return muLawSample;
 }
 
 /**
@@ -200,11 +234,21 @@ function encodeSample$1(sample) {
  * @return {number}
  */
 function decodeSample$1(muLawSample) {
-  muLawSample = ~muLawSample;
   /** @type {number} */
-  let t = ((muLawSample & 0xf) << 3) + BIAS;
-  t <<= (muLawSample & 0x70) >> 4;
-  return ((muLawSample & 0x80) ? (BIAS - t) : (t - BIAS));
+  let sign;
+  /** @type {number} */
+  let exponent;
+  /** @type {number} */
+  let mantissa;
+  /** @type {number} */
+  let sample;
+  muLawSample = ~muLawSample;
+  sign = (muLawSample & 0x80);
+  exponent = (muLawSample >> 4) & 0x07;
+  mantissa = muLawSample & 0x0F;
+  sample = decodeTable[exponent] + (mantissa << (exponent+3));
+  if (sign != 0) sample = -sample;
+  return sample;
 }
 
 /**
@@ -233,30 +277,6 @@ function decode$1(samples) {
     pcmSamples[i] = decodeSample$1(samples[i]);
   }
   return pcmSamples;
-}
-
-/**
- * Return the segment value of a PCM sample.
- * @param {number} sample
- * @return {number}
- * @private
- */
-function segmentValue_(sample) {
-  /** @type {number} */
-  let segment = 0;
-  sample >>= 7;
-  if (sample & 0xf0) {
-    sample >>= 4;
-    segment += 4;
-  }
-  if (sample & 0x0c) {
-    sample >>= 2;
-    segment += 2;
-  }
-  if (sample & 0x02) {
-    segment += 1;
-  }
-  return segment;
 }
 
 var mulaw = /*#__PURE__*/Object.freeze({

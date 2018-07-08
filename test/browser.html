@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>alawmulaw: browser tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/mocha@4.0.1/mocha.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<h1><a href="">alawmulaw</a></h1>
+		<p>A-Law and mu-Law codecs in JavaScript.<br>
+			Copyright (c) 2018 Rafael da Silva Rocha.<br>
+			<a href="">https://github.com/rochars/alawmulaw</p>
+		<p><a href="https://www.npmjs.com/package/alawmulaw"><img src="https://img.shields.io/npm/v/alawmulaw.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/alawmulaw/index.html"><img src="https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge" alt="Docs"></a> <a href="https://rawgit.com/rochars/alawmulaw/master/test/browser.html"><img src="https://img.shields.io/badge/tests-online-blue.svg?style=for-the-badge" alt="Tests"></a><br><a href="https://codecov.io/gh/rochars/alawmulaw"><img src="https://img.shields.io/codecov/c/github/rochars/alawmulaw.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/alawmulaw"><img src="https://img.shields.io/travis/rochars/alawmulaw.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/alawmulaw"><img src="https://img.shields.io/appveyor/ci/rochars/alawmulaw.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/alawmulaw/"><img src="https://img.shields.io/scrutinizer/g/rochars/alawmulaw.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
+	</div>
+
+	<!-- Load Mocha -->
+	<div class="container">
+		<div id="mocha"></div>
+	</div>
+
+	<script src="https://unpkg.com/chai@4.1.2/chai.js"></script>
+	<script src="https://unpkg.com/mocha@4.0.1/mocha.js"></script>
+	<script>mocha.setup('bdd')</script>
+
+	<!-- Load browser dist, load types -->
+	<script src="../dist/alawmulaw.min.js"></script>
+
+	<!-- Load the tests -->
+	<script src="encode.js"></script>
+	<script src="decode.js"></script>
+
+	<!-- Run the tests -->
+	<script>
+	    mocha.checkLeaks();
+	    mocha.run();
+	</script>
+
+</body>
+</html>
