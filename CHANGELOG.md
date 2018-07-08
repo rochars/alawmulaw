@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.0.1 (2018-07-08)
+- UMD dist transpiled to ES5
+- Different mu-Law algorithm; should sound the same.
+
 ## v5.0.0 (2018-07-01)
 - Add TypeScript declaration
 - Using typed arrays for input and ouput
