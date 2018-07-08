@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v5.0.2 (2018-07-08)
+- Fix: UMD dist for browsers.
+
 ## v5.0.1 (2018-07-08)
 - UMD dist transpiled to ES5
 - Different mu-Law algorithm; should sound the same.

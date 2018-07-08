@@ -28,7 +28,7 @@ let UMDBanner = '(function (global, factory) {' +
   "typeof module !== 'undefined' ? factory(exports) :" +
   "typeof define === 'function' && define.amd ? " +
   "define(['exports'], factory) :" +
-  '(factory((global.mulaw = {})));' +
+  '(factory((global.alawmulaw = {})));' +
   '}(this, (function (exports) {;' + CJSBanner;
 let UMDFooter = CJSFooter + '})));';
 
