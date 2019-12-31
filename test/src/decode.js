@@ -4,7 +4,7 @@
  */
 
 var chai = chai || require("chai");
-var alawmulaw = alawmulaw || require('../test/loader.js');
+var alawmulaw = alawmulaw || require('../../test/loader.js');
 var assert = chai.assert;
 
 describe('decode A-Law', function() {

@@ -1,110 +1,51 @@
 /*
- * https://github.com/rochars/alawmulaw
- * Copyright (c) 2018 Rafael da Silva Rocha.
+ * Copyright (c) 2018-2019 Rafael da Silva Rocha.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
  */
 
 /**
  * @fileoverview rollup configuration file.
+ * @see https://github.com/rochars/alawmulaw
  */
 
-import commonjs from 'rollup-plugin-commonjs';
-import nodeResolve from 'rollup-plugin-node-resolve';
-import closure from 'rollup-plugin-closure-compiler-js';
-
-// Read externs definitions
-const fs = require('fs');
-let externsSrc = fs.readFileSync('./externs.js', 'utf8');
-
-
-// CJS wrapper
-let CJSBanner = "'use strict';Object.defineProperty(" +
-  "exports, '__esModule', { value: true });";
-let CJSFooter = 'exports.alaw = alawmulaw.alaw;' +
-  'exports.mulaw = alawmulaw.mulaw;';
-
-// UMD wrapper
-let UMDBanner = '(function (global, factory) {' +
-  "typeof exports === 'object' && " +
-  "typeof module !== 'undefined' ? factory(exports) :" +
-  "typeof define === 'function' && define.amd ? " +
-  "define(['exports'], factory) :" +
-  '(factory((global.alawmulaw = {})));' +
-  '}(this, (function (exports) {;' + CJSBanner;
-let UMDFooter = CJSFooter + '})));';
+import compiler from '@ampproject/rollup-plugin-closure-compiler';
 
 export default [
-  // cjs
-  {
-    input: 'index.js',
-    output: [
-      {
-        file: 'dist/alawmulaw.cjs.js',
-        name: 'alawmulaw',
-        format: 'cjs'
-      }
-    ],
-    plugins: [
-      nodeResolve(),
-      commonjs()
-    ]
-  },
-  // es
   {
     input: 'index.js',
     output: [
       {
         file: 'dist/alawmulaw.js',
-        format: 'es'
-      }
-    ],
-    plugins: [
-      nodeResolve(),
-      commonjs()
-    ]
-  },
-  // umd
-  {
-    input: 'index.js',
-    output: [
-      {
-        file: 'dist/alawmulaw.umd.js',
         name: 'alawmulaw',
-        format: 'iife'
-      }
+        format: 'umd'
+      },
     ],
     plugins: [
-      nodeResolve(),
-      commonjs(),
-      closure({
-        languageIn: 'ECMASCRIPT6',
-        languageOut: 'ECMASCRIPT5',
-        compilationLevel: 'WHITESPACE_ONLY',
-        warningLevel: 'VERBOSE',
-        preserveTypeAnnotations: true,
-        outputWrapper: UMDBanner + '%output%' + UMDFooter
-      })
-    ]
-  },
-  // browser
-  {
-    input: 'index.js',
-    output: [
-      {
-        name: 'alawmulaw',
-        format: 'iife',
-        file: 'dist/alawmulaw.min.js',
-        footer: 'window["alawmulaw"]=alawmulaw;'
-      }
-    ],
-    plugins: [
-      nodeResolve(),
-      commonjs(),
-      closure({
-        languageIn: 'ECMASCRIPT6',
-        languageOut: 'ECMASCRIPT5',
-        compilationLevel: 'ADVANCED',
-        warningLevel: 'VERBOSE',
-        externs: [{src:externsSrc}]
+      compiler({
+        language_in: 'ECMASCRIPT6',
+        language_out: 'ECMASCRIPT3',
+        compilation_level: 'SIMPLE',
+        warning_level: 'VERBOSE',
+        externs: ['externs/alawmulaw.js']
       })
     ]
   }

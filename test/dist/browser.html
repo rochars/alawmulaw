@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>alawmulaw: browser tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/mocha@4.0.1/mocha.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<h1><a href="https://github.com/rochars/alawmulaw">alawmulaw</a></h1>
+		<p>Copyright (c) 2018-2019 Rafael da Silva Rocha.<br>
+			<a href="https://github.com/rochars/alawmulaw">https://github.com/rochars/uint-buffer</a></p>
+	</div>
+
+	<!-- Load UMD -->
+	<script src="../../dist/alawmulaw.js"></script>
+
+	<!-- Load Chai and Mocha -->
+	<div class="container">
+		<div id="mocha"></div>
+	</div>
+	<script src="https://www.chaijs.com/chai.js"></script>
+	<script src="https://unpkg.com/mocha@4.0.1/mocha.js"></script>
+	<script>
+		var assert = chai.assert;
+		mocha.setup('bdd')
+	</script>
+
+	<!-- Load the tests -->
+	<script src="../src/encode.js"></script>
+	<script src="../src/decode.js"></script>
+	
+	<!-- Run the tests -->
+	<script>
+	    mocha.checkLeaks();
+	    mocha.run();
+	</script>
+
+</body>
+</html>

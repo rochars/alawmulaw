@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 6.0.0 - 2019-12-31
+- New package structure:
+	* dist file is "./dist/alawmulaw.js", a UMD served as "main"
+	* ES6 source is "./index.js", served as "module"
+
 ## v5.0.2 (2018-07-08)
 - Fix: UMD dist for browsers.
 

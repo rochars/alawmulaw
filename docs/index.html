@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
     <title>Home - Documentation</title>
-
+    
+    
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
@@ -11,6 +13,8 @@
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -21,7 +25,8 @@
 
 <label for="nav-trigger" class="overlay"></label>
 
-<nav>
+<nav >
+    
     <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-alawmulaw.html">alawmulaw</a></li><li><a href="module-alawmulaw_alaw.html">alawmulaw/alaw</a><ul class='methods'><li data-type='method'><a href="module-alawmulaw_alaw.html#.decode">decode</a></li><li data-type='method'><a href="module-alawmulaw_alaw.html#.decodeSample">decodeSample</a></li><li data-type='method'><a href="module-alawmulaw_alaw.html#.encode">encode</a></li><li data-type='method'><a href="module-alawmulaw_alaw.html#.encodeSample">encodeSample</a></li></ul></li><li><a href="module-alawmulaw_mulaw.html">alawmulaw/mulaw</a><ul class='methods'><li data-type='method'><a href="module-alawmulaw_mulaw.html#.decode">decode</a></li><li data-type='method'><a href="module-alawmulaw_mulaw.html#.decodeSample">decodeSample</a></li><li data-type='method'><a href="module-alawmulaw_mulaw.html#.encode">encode</a></li><li data-type='method'><a href="module-alawmulaw_mulaw.html#.encodeSample">encodeSample</a></li></ul></li></ul>
 </nav>
 
@@ -35,6 +40,11 @@
     
 
 
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
 
 
 
@@ -45,19 +55,21 @@
     
 
 
-    <section class="readme">
-        <article><h1>alawmulaw</h1><p>Copyright (c) 2018 Rafael da Silva Rocha.<br>https://github.com/rochars/alawmulaw</p>
-<p><a href="https://www.npmjs.com/package/alawmulaw"><img src="https://img.shields.io/npm/v/alawmulaw.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/alawmulaw/index.html"><img src="https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge" alt="Docs"></a> <a href="https://rawgit.com/rochars/alawmulaw/master/test/browser.html"><img src="https://img.shields.io/badge/tests-online-blue.svg?style=for-the-badge" alt="Tests"></a><br><a href="https://codecov.io/gh/rochars/alawmulaw"><img src="https://img.shields.io/codecov/c/github/rochars/alawmulaw.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/alawmulaw"><img src="https://img.shields.io/travis/rochars/alawmulaw.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/alawmulaw"><img src="https://img.shields.io/appveyor/ci/rochars/alawmulaw.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/alawmulaw/"><img src="https://img.shields.io/scrutinizer/g/rochars/alawmulaw.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
-<p>A-Law and mu-Law codecs in JavaScript.</p>
-<h2>Install</h2><pre class="prettyprint source"><code>npm install alawmulaw</code></pre><h2>Use</h2><h3>Node</h3><p>Require from 'alawmulaw'</p>
-<pre class="prettyprint source lang-javascript"><code>const alawmulaw = require('alawmulaw');
 
-// Encode all the samples in a file
-// Only 16-bit samples are supported
-let aLawSamples = alawmulaw.alaw.encode(pcmSamples);</code></pre><h3>ES module</h3><p>Import from <strong>alawmulaw.js</strong>:</p>
-<pre class="prettyprint source lang-javascript"><code>import * as alawmulaw from './dist/alawmulaw.js';
-let aLawSamples = alawmulaw.alaw.encode(pcmSamples);</code></pre><h3>Browser</h3><p>Use the compiled file in the <em>/dist</em> folder:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;./dist/alawmulaw.min.js&quot;>&lt;/script>
+    <section class="readme">
+        <article><h1>alawmulaw</h1>
+<p>Copyright (c) 2018-2019 Rafael da Silva Rocha.<br>
+https://github.com/rochars/alawmulaw</p>
+<p><a href="https://www.npmjs.com/package/alawmulaw"><img src="https://img.shields.io/npm/v/alawmulaw.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/alawmulaw/index.html"><img src="https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge" alt="Docs"></a> <a href="https://rawgit.com/rochars/alawmulaw/master/test/browser.html"><img src="https://img.shields.io/badge/tests-online-blue.svg?style=for-the-badge" alt="Tests"></a><br>
+<a href="https://codecov.io/gh/rochars/alawmulaw"><img src="https://img.shields.io/codecov/c/github/rochars/alawmulaw.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/alawmulaw"><img src="https://img.shields.io/travis/rochars/alawmulaw.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/alawmulaw"><img src="https://img.shields.io/appveyor/ci/rochars/alawmulaw.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/alawmulaw/"><img src="https://img.shields.io/scrutinizer/g/rochars/alawmulaw.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
+<p>A-Law and mu-Law codecs in JavaScript.</p>
+<h2>Install</h2>
+<pre class="prettyprint source"><code>npm install alawmulaw
+</code></pre>
+<h2>Use</h2>
+<h3>Browser</h3>
+<p>Use the <strong>alawmulaw.js</strong> file in the <em>/dist</em> folder:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;alawmulaw.js&quot;>&lt;/script>
 &lt;script>
     // A-Law
     samples = alawmulaw.alaw.encode(samples);
@@ -70,13 +82,25 @@ let aLawSamples = alawmulaw.alaw.encode(pcmSamples);</code></pre><h3>Browser</h3
     samples = alawmulaw.mulaw.decode(samples);
     sample = alawmulaw.mulaw.encodeSample(sample);
     sample = alawmulaw.mulaw.decodeSample(sample);
-&lt;/script></code></pre><p>Or get it from the <a href="https://www.jsdelivr.com">jsDelivr</a> CDN:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/alawmulaw&quot;>&lt;/script></code></pre><p>Or get it from <a href="https://www.unpkg.com">unpkg</a>:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/alawmulaw&quot;>&lt;/script></code></pre><p>Or as a ES6 module in modern browsers from <a href="https://jspm.io">jspm</a>:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script type=&quot;module&quot;>
-  import * as alawmulaw from 'https://dev.jspm.io/alawmulaw';
-  // ...
-&lt;/script></code></pre><h2>API</h2><h3>alawmulaw.alaw</h3><pre class="prettyprint source lang-javascript"><code>
+&lt;/script>
+</code></pre>
+<p>Or get it from the <a href="https://www.jsdelivr.com">jsDelivr</a> CDN:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/alawmulaw&quot;>&lt;/script>
+</code></pre>
+<p>Or get it from <a href="https://www.unpkg.com">unpkg</a>:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/alawmulaw&quot;>&lt;/script>
+</code></pre>
+<h3>Node</h3>
+<p>Require from 'alawmulaw'</p>
+<pre class="prettyprint source lang-javascript"><code>const alawmulaw = require('alawmulaw');
+
+// Encode all the samples in a file
+// Only 16-bit samples are supported
+let aLawSamples = alawmulaw.alaw.encode(pcmSamples);
+</code></pre>
+<h2>API</h2>
+<h3>alawmulaw.alaw</h3>
+<pre class="prettyprint source lang-javascript"><code>
 /**
  * Encode a 16-bit linear PCM sample as 8-bit A-Law.
  * @param {number} sample A 16-bit PCM sample
@@ -103,7 +127,10 @@ export function encode(samples) {}
  * @param {!Uint8Array} samples A array of 8-bit A-Law samples.
  * @return {!Int16Array}
  */
-export function decode(samples) {}</code></pre><h3>alawmulaw.mulaw</h3><pre class="prettyprint source lang-javascript"><code>/**
+export function decode(samples) {}
+</code></pre>
+<h3>alawmulaw.mulaw</h3>
+<pre class="prettyprint source lang-javascript"><code>/**
  * Encode a 16-bit linear PCM sample as 8-bit mu-Law.
  * @param {number} sample A 16-bit PCM sample
  * @return {number}
@@ -129,26 +156,14 @@ export function encode(samples) {}
  * @param {!Uint8Array} samples A array of 8-bit mu-Law samples.
  * @return {!Int16Array}
  */
-export function decode(samples) {}</code></pre><h2>Distribution</h2><p>This library is a ES module also distributed as a CommonJS module, UMD module and a compiled script for browsers. It works out of the box in Node when installed with <code>npm install alawmulaw</code>. It includes a TypeScript definition file.</p>
-<p>If you use the <a href="https://github.com/google/closure-compiler">Closure Compiler</a>, this package includes a externs file: <strong>./externs.js</strong>.</p>
-<h3>If you are using this lib in a browser:</h3><p>You may load both <strong>./dist/alawmulaw.umd.js</strong> and <strong>./dist/alawmulaw.min.js</strong> in the browser with <code>&lt;script&gt;</code> tags. Ideally you should use <strong>alawmulaw.min.js</strong>. You can load it via the https://unpkg.com and https://<a href="http://www.jsdelivr.com/">www.jsdelivr.com/</a> CDNs:</p>
-<p><a href="https://unpkg.com/alawmulaw">unpkg</a>:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/alawmulaw&quot;>&lt;/script></code></pre><p><a href="https://cdn.jsdelivr.net/npm/alawmulaw">jsDelivr</a>:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/alawmulaw&quot;>&lt;/script></code></pre><h3>If you are using this lib as a dependency:</h3><ul>
-<li><p>The <strong>CommonJS</strong> dist is <strong>./dist/alawmulaw.cjs.js</strong>. It is the dist file used by Node. It is served in the &quot;main&quot; field of package.json and is the source you are running when you <strong>npm install alawmulaw</strong>. It is not compiled or minified.</p>
-</li>
-<li><p>The <strong>UMD</strong> module is <strong>./dist/alawmulaw.umd.js</strong>. It is transpiled to ES5 and compatible with Node, AMD and browsers. It is served in the &quot;browser&quot; field of package.json.</p>
-</li>
-<li><p>The <strong>browser-only</strong> dist is <strong>./dist/alawmulaw.min.js</strong>. It is transpiled to ES5 and compiled. It is used in the &quot;unpkg&quot; and &quot;jsdelivr&quot; fields of package.json.</p>
-</li>
-<li><p>The <strong>ES6 dist</strong> is <strong>./dist/alawmulaw.js</strong>, served as &quot;es2015&quot; in package.json. It is not compiled/minified.</p>
-</li>
-<li><p><strong>./main.js</strong> is served as &quot;module&quot; in package.json. This should be the entry point for bundlers.</p>
-</li>
-</ul>
-<p>If your module bundler is using &quot;browser&quot; as the entry point <strong>your dist should work the same</strong> but will be a larger file.</p>
-<h2>References</h2><p>https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c<br>https://github.com/deftio/companders<br>http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html</p>
-<h3>LICENSE</h3><p>Copyright (c) 2018 Rafael da Silva Rocha.</p>
+export function decode(samples) {}
+</code></pre>
+<h2>References</h2>
+<p>https://github.com/torvalds/linux/blob/master/sound/core/oss/mulaw.c<br>
+https://github.com/deftio/companders<br>
+http://dystopiancode.blogspot.com.br/2012/02/pcm-law-and-u-law-companding-algorithms.html</p>
+<h3>LICENSE</h3>
+<p>Copyright (c) 2018-2019 Rafael da Silva Rocha.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 &quot;Software&quot;), to deal in the Software without restriction, including
@@ -187,9 +202,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
+            
 
 <dl class="details">
 
@@ -234,18 +250,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 
 
 
-        
-            <div class="description">The alawmulaw API.</div>
-        
+            
+                <div class="description">The alawmulaw API.</div>
+            
 
+            
         
-    
-    </div>
-
-    
-
+        </div>
     
 
+    
+
+    
+
+    
+    
     
 
      
@@ -281,9 +300,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
+            
 
 <dl class="details">
 
@@ -328,18 +348,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 
 
 
-        
-            <div class="description">A-Law codec.</div>
-        
+            
+                <div class="description">A-Law codec.</div>
+            
 
+            
         
-    
-    </div>
-
-    
-
+        </div>
     
 
+    
+
+    
+
+    
+    
     
 
      
@@ -375,9 +398,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
+            
 
 <dl class="details">
 
@@ -422,18 +446,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 
 
 
-        
-            <div class="description">mu-Law codec.</div>
-        
+            
+                <div class="description">mu-Law codec.</div>
+            
 
+            
         
-    
-    </div>
-
-    
-
+        </div>
     
 
+    
+
+    
+
+    
+    
     
 
      
@@ -454,15 +481,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 
 
 
+    
+    
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jul 08 2018 15:49:29 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
 <script src="scripts/linenumber.js"></script>
+
+
+
 </body>
 </html>
